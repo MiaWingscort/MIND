@@ -69,6 +69,23 @@ body {
 	cursor: pointer;
 }
 
+#profil-podaci {
+	width: 100%
+	padding: 20px;
+}
+
+.data_left {
+	text-align: left;
+	color: #e60000;
+	font-weight: bold;
+	padding: 2px 5px 2px 5px;
+}
+
+.data_right {
+	text-align: left;
+	color: black;
+	padding: 2px 5px 2px 5px;
+}
 /* Medium devices (tablets, 992px and less) */
 @media (max-width: 992px) {
 	.banner {
