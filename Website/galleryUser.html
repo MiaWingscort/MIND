@@ -16,35 +16,22 @@
 		background: url('./slike/background.jpg');
 		color: #ffffff;
 	}
+	#profilePicture {
+	    zoom: 2;
+
+	    display: block;
+	    margin: auto;
+
+	    height: auto;
+	    max-height: 100%;
+
+	    width: 70%;
+	    max-width: 100%;
+	}
 </style>
 
 <script type="text/javascript">
-	function openRegisterTab(tabName, element) {
-	    var activeTab = $('#' + tabName + '-tab');
 
-	   	var tabContents = $('.tab-content').first()
-	   	tabContents = $(tabContents[0]).children();
-
-	   	for (var i = 0; i < tabContents.length; i++) {
-	   		$(tabContents[i]).removeClass('active');
-	   		if (tabContents[i] !== activeTab){
-	   			$(tabContents[i]).removeClass('fade');
-	   		}
-	   	}
-	   
-	   	$(activeTab).addClass('active');
-
-	    var tabHeaders = $('.nav-tabs');
-
-	    tabHeaders = $(tabHeaders[0]).children();
-
-	    for (var i = 0; i < tabHeaders.length; i++) {
-	   		$(tabHeaders[i]).removeClass('active');
-	   	}
-
-	   	$(element).addClass('active');
-
-	}
 </script>
 
 </head>
@@ -76,17 +63,7 @@
 						    </div>
 						    <div class="collapse navbar-collapse" id="myNavbar">
 						      <ul class="nav navbar-nav navbar-right">
-						      	<li>	
-						      		<form class="form-inline" action="/action_page.php" style="padding: 10px">
-									    <div class="form-group">
-									      <input type="email" class="form-control" id="email" placeholder="E-mail" name="email">
-									    </div>
-									    <div class="form-group">
-									      <input type="password" class="form-control" id="pwd" placeholder="Lozinka" name="pwd">
-									    </div>
-									 </form>
-								</li>
-						        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Prijavi se</a></li>
+						        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Odjavi se</a></li>
 						      </ul>
 						    </div>
 						  </div>
@@ -97,77 +74,126 @@
 						<nav class="navbar navbar-default">
 						  <div class="container-fluid">
 						    <ul class="nav navbar-nav">
-						      <li><a href="index.html">Početna strana</a></li>
+						      <li><a href="profile.html">Moj Profil</a></li>
 						      <li class="active"><a href="#">Galerija</a></li>
 						      <li><a href="idea.html">Ideje</a></li>
 						      <li><a href="contact.html">Kontakt</a></li>
+						      <li><a href="generator.html">Generator</a></li>
 						    </ul>
 						  </div>
 						</nav>
 					</div>
 
 					<div class="row">
-						<div id="galerija" class="col-xs-12 ">
-							<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+						<div id="galerija" class="col-xs-6 col-md-7 col-lg-8">
+							<div class="col-lg-4 col-md-6 col-xs-12 thumb">
 				                <a class="thumbnail" href="#">
 				                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
 				                </a>
 				            </div>
-				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				            <div class="col-lg-4 col-md-6 col-xs-12 thumb">
 				                <a class="thumbnail" href="#">
 				                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
 				                </a>
 				            </div>
-				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				            <div class="col-lg-4 col-md-6 col-xs-12 thumb">
 				                <a class="thumbnail" href="#">
 				                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
 				                </a>
 				            </div>
-				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				            <div class="col-lg-4 col-md-6 col-xs-12 thumb">
 				                <a class="thumbnail" href="#">
 				                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
 				                </a>
 				            </div>
-				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				            <div class="col-lg-4 col-md-6 col-xs-12 thumb">
 				                <a class="thumbnail" href="#">
 				                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
 				                </a>
 				            </div>
-				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				            <div class="col-lg-4 col-md-6 col-xs-12 thumb">
 				                <a class="thumbnail" href="#">
 				                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
 				                </a>
 				            </div>
-				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				            <div class="col-lg-4 col-md-6 col-xs-12 thumb">
 				                <a class="thumbnail" href="#">
 				                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
 				                </a>
 				            </div>
-				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				            <div class="col-lg-4 col-md-6 col-xs-12 thumb">
 				                <a class="thumbnail" href="#">
 				                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
 				                </a>
 				            </div>
-				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+				            <div class="col-lg-4 col-md-6 col-xs-12 thumb">
 				                <a class="thumbnail" href="#">
 				                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
 				                </a>
 				            </div>
-				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-				                <a class="thumbnail" href="#">
-				                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-				                </a>
-				            </div>
-				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-				                <a class="thumbnail" href="#">
-				                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-				                </a>
-				            </div>
-				            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-				                <a class="thumbnail" href="#">
-				                    <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-				                </a>
-				            </div>
+						</div>
+						<div class="col-xs-6 col-md-5 col-lg-4">
+							<div class="panel panel-default">
+								<div class="panel-body" align="center">
+									<span class="glyphicon glyphicon-user"></span>
+									<label>Petar Petrovic</label>
+								</div>
+								<div class="panel-footer">
+									<div class="row">
+										<table class="table">
+										    <tbody>
+								  				<tr>
+								  					<td class="data_left">Datum rodjenja:</td>
+								  					<td rowspan="4" align="center">
+								  						<img id="profilePicture" src="./slike/profilnaSlika.png">
+								  						<input type="button" value="Promeni sliku" align="center" style="margin-top: 5px"></input>
+								  					</td>
+								  				</tr>
+								  				<tr>
+								  					<td class="data_right">&nbsp&nbsp 1.1.1995</td>
+								  				</tr>
+								  				<tr>
+								  					<td class="data_left">Pol</td>
+								  				</tr>
+								  				<tr>
+								  					<td class="data_right">&nbsp&nbsp Muski</td>
+								  				</tr>
+								  				<tr>
+								  					<td class="data_left">Email:</td>
+								  					<td class="data_right">pera@gmail.com</td>
+								  				</tr>
+								  				<tr>
+								  					<td class="data_left">Adresa:</td>
+								  					<td class="data_right">Gandijeva 15</td>
+								  				</tr>
+								  				<tr>
+								  					<td class="data_left">Obrazovanje:</td>
+								  					<td class="data_right">/</td>
+								  				</tr>
+								  				<tr>
+								  					<td class="data_left">Primalac poklona:</td>
+								  					<td class="data_right">Marija Petrovic</td>
+								  				</tr>
+								  				<tr>
+								  					<td colspan="2">
+								  						<label for="sel1">Interesovanja</label>
+														<select multiple class="form-control" id="sel1">
+															<option>Automobili</option>
+															<option>Knjige</option>
+															<option>Vina</option>
+														</select>
+								  					</td>
+								  				</tr>
+								  				<tr>
+								  					<td colspan="2" align="center">
+								  						<input type="button" value="Dodaj sliku poklona"></input>
+								  					</td>
+							  					</tr>
+							  				</tbody>
+						  				</table>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
