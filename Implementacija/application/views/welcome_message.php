@@ -17,7 +17,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	body {
 		background: url('./slike/background.jpg');
 		color: #ffffff;
-	}
+	} 
+	#loader {
+        position: fixed;
+        left: 0px;
+        top: 70px;
+        width: 100%;
+        height: calc(100% - 70px);
+        z-index: 9999;
+        background: 50% 50% no-repeat rgb(160,160,160);
+    }
+    #loader img {
+        transform: scale(0.8, 0.8);
+        -ms-transform: scale(0.8, 0.8);
+        -webkit-transform: scale(0.8, 0.8);
+        -moz-transform: scale(0.8, 0.8);
+        display: flex;
+        margin: auto;
+        max-width: 100%;
+        height: 100%;
+        width: 100%;
+    }
 </style>
 
 <script type="text/javascript">
@@ -75,6 +95,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	function zatvoriGreske(ime) {
 		$('#' + ime).slideToggle(400);
 	}
+
+	$(window).on('load', function() {
+        $('#loader').fadeOut(2000, function(){
+
+        });
+    });
 </script>
 
 </head>
@@ -83,6 +109,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<?php
 			$this->load->view('includes/header-login.php');
 		?>
+
+		<div id="loader">
+			<img src="./slike/giphy.gif">
+		</div>
 		<div class="row content">
 			<div class="col-xs-0 col-sm-0 col-md-2">
 				<div id="leftBanner" class="row banner">
