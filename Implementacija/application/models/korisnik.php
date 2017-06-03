@@ -32,7 +32,7 @@ class Korisnik extends CI_Model
 	}
 
 	function postoji($korisnik) {
-		return $this->prijavi($korisnik->{'E-mail'}, $korisnik->Lozinka);
+		return $this->prijavi($korisnik['E-mail'], $korisnik['Lozinka']);
 	}
 
 	function postojiPonistavanje($korisnik) {

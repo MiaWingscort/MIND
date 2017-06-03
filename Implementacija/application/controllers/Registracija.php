@@ -48,10 +48,11 @@ class Registracija extends CI_Controller {
 	   		$godina = $this->input->post('godina');
 
 	   		$rez = $this->korisnik->postoji(array('E-mail' => $email, 'Lozinka' => $lozinka));
-	   	
-	   		if ($rez == true) {
+
+	   		if ($rez) {
+
 	   			$this->session->set_flashdata('greske-igrac', 'Korisnik sa email adresom ' . $email .' je vec registrovan.');
-			redirect('/');
+			    redirect('/');
 	   		} else {
 	   			$id = $this->korisnik->dodaj(array('E-mail' => $email, 'Lozinka' => $lozinka, 'Zabranjen' => 'N'));
 	   			$this->igrac->dodaj(array('SifKor' => $id, 'Ime' => $ime, 'Prezime' => $prezime, 'Adresa' => $adresa, 'Telefon' => $telefon, 'DatumRodjenja' => $godina . '-' . $mesec . '-' . $dan, 'Pol' => $pol));
@@ -88,8 +89,8 @@ class Registracija extends CI_Controller {
 	   		$adresa = $this->input->post('adresa');
 
 	   		$rez = $this->korisnik->postoji(array('E-mail' => $email, 'Lozinka' => $lozinka));
-	   	
-	   		if ($rez == true) {
+      
+	   		if ($rez) {
 	   			$this->session->set_flashdata('greske-prodavac', 'Prodavac sa email adresom ' . $email .' je vec registrovan.');
 			redirect('/');
 	   		} else {
