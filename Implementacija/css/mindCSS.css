@@ -1,0 +1,107 @@
+#main {
+	background-color: red;
+	margin-top: 10px;
+	background-color: rgba(255, 255, 255, 0);
+	border-radius: 5px;
+	border: 5px solid #e60000;
+}
+
+.red-border {
+	border: 3px solid #e60000;
+	background-color: #ffffff;
+	color: #e60000;
+}
+
+.padding-10 {
+	padding: 10px;
+}
+
+.padding-5 {
+	padding: 5px;
+}
+
+.no-padding {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.margin-right-5{
+	margin-right: 5px;
+}
+
+@font-face{
+	font-family: Sparkly; // Name of the font
+	src: url(./fonts/FontdinerdotcomSparkly.ttf); 
+}
+
+.navbar-header img {
+	height: 70px;
+}
+
+body {
+	background: url('./slike/background.jpg');
+	color: #ffffff;
+}
+
+.banner {
+	margin: 100px auto;
+}
+
+.banner img {
+	margin-top: 50px;
+	width: 90%
+}
+
+.banner img:hover {
+	cursor: pointer;
+}
+
+.bottomBanner {
+	margin: 20px auto;
+}
+
+.bottomBanner img {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.bottomBanner img:hover {
+	cursor: pointer;
+}
+
+#profil-podaci {
+	width: 100%
+	padding: 20px;
+}
+
+.data_left {
+	text-align: left;
+	color: #e60000;
+	font-weight: bold;
+	padding: 2px 5px 2px 5px;
+}
+
+.data_right {
+	text-align: left;
+	color: black;
+	padding: 2px 5px 2px 5px;
+}
+/* Medium devices (tablets, 992px and less) */
+@media (max-width: 992px) {
+	.banner {
+		display: none;
+	}
+}
+
+.header {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 2;
+	background-color: #ffffff;
+}
+
+.content {
+	margin-top: 150px;
+}
