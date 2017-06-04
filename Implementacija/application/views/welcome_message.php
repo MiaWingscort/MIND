@@ -215,7 +215,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										    <label class="control-label col-sm-5" for="pwd">Pol*</label>
 										    <div class="col-sm-7"> 
 										      <label class="radio-inline"><input type="radio" value="M" name="pol">Muski</label>
-											  <label class="radio-inline"><input type="radio" value="Z" name="pol">Zenski</label>
+											    <label class="radio-inline"><input type="radio" value="Z" name="pol">Zenski</label>
 										    </div>
 										  </div>
 										  <div class="form-group">
