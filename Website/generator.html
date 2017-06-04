@@ -77,14 +77,15 @@
 
 <script type="text/javascript">
 	function addPlayer() {
+		var broj = $("#generatorTable").children().length;
 		$('#generatorTable tr:last').after('<tr>\
 											<td class="data_left col-xs-2">Ime:</td>\
 						  					<td class="data_right col-xs-4">\
-						  						<input type="text" class="form-control" name="ime" placeholder="Unesite ime">\
+						  						<input type="text" class="form-control" name="ime_' + broj + '" placeholder="Unesite ime">\
 						  					</td>\
 						  					<td class="data_left col-xs-2">Email:</td>\
 						  					<td class="data_right col-xs-4">\
-						  						<input type="text" class="form-control" name="email" placeholder="Unesite email">\
+						  						<input type="text" class="form-control" name="email_' + broj + '" placeholder="Unesite email">\
 						  					</td> \
 					  					</tr>');
 	}
@@ -159,42 +160,42 @@
 												<tr>
 								  					<td class="data_left col-xs-2">Ime:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" name="ime" placeholder="Unesite ime">
+								  						<input type="text" class="form-control" name="ime_0" placeholder="Unesite ime">
 								  					</td>
 								  					<td class="data_left col-xs-2">Email:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" name="email" placeholder="Unesite email">
+								  						<input type="text" class="form-control" name="email_0" placeholder="Unesite email">
 								  					</td>
 								  				</tr>
 								  				<tr>
 								  					<td class="data_left col-xs-2">Ime:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" name="ime" placeholder="Unesite ime">
+								  						<input type="text" class="form-control" name="ime_1" placeholder="Unesite ime">
 								  					</td>
 								  					<td class="data_left col-xs-2">Email:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" name="email" placeholder="Unesite email">
+								  						<input type="text" class="form-control" name="email_1" placeholder="Unesite email">
 								  					</td>
 								  				</tr>
 								  				<tr>
 								  					<td class="data_left col-xs-2">Ime:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" name="ime" placeholder="Unesite ime">
+								  						<input type="text" class="form-control" name="ime_2" placeholder="Unesite ime">
 								  					</td>
 								  					<td class="data_left col-xs-2">Email:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" name="email" placeholder="Unesite email">
+								  						<input type="text" class="form-control" name="email_2" placeholder="Unesite email">
 								  					</td>
 								  				</tr>
 								  				<tr>
 								  					<td class="data_left col-xs-2">Ime:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" name="ime" placeholder="Unesite ime">
+								  						<input type="text" class="form-control" name="ime_3" placeholder="Unesite ime">
 								  					</td>
 								  					<td class="data_left col-xs-2">Email:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" name="email" placeholder="Unesite email">
-								  					</td>
+								  						<input type="text" class="form-control" name="email_3" placeholder="Unesite email">
+                            </td>
 								  				</tr>
 											</tbody>
 										</table>
