@@ -77,14 +77,15 @@
 
 <script type="text/javascript">
 	function addPlayer() {
+		var broj = $("#generatorTable").children().length;
 		$('#generatorTable tr:last').after('<tr>\
 											<td class="data_left col-xs-2">Ime:</td>\
 						  					<td class="data_right col-xs-4">\
-						  						<input type="text" class="form-control" placeholder="Unesite ime">\
+						  						<input type="text" class="form-control" name="ime_' + broj + '" placeholder="Unesite ime">\
 						  					</td>\
 						  					<td class="data_left col-xs-2">Email:</td>\
 						  					<td class="data_right col-xs-4">\
-						  						<input type="text" class="form-control" placeholder="Unesite email">\
+						  						<input type="text" class="form-control" name="email_' + broj + '" placeholder="Unesite email">\
 						  					</td> \
 					  					</tr>');
 	}
@@ -150,7 +151,7 @@
 								<div class="panel-footer">
 									<div class="form-group">
 								      <label class="title">Zelis da igras Tajanstvenog Deda mraza sa svojim prijateljima?</label>
-									  <form name="generatorForm">
+									  <form name="generatorForm" method="GET">
 										<table class="table" id="generatorTable">
 											<thead>
 												<th colspan="4" class="table-title">Unesite email adrese i imena igraca i mi cemo ih rasporediti za Vas</th>
@@ -159,55 +160,55 @@
 												<tr>
 								  					<td class="data_left col-xs-2">Ime:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" placeholder="Unesite ime">
+								  						<input type="text" class="form-control" name="ime_0" placeholder="Unesite ime">
 								  					</td>
 								  					<td class="data_left col-xs-2">Email:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" placeholder="Unesite email">
+								  						<input type="text" class="form-control" name="email_0" placeholder="Unesite email">
 								  					</td>
 								  				</tr>
 								  				<tr>
 								  					<td class="data_left col-xs-2">Ime:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" placeholder="Unesite ime">
+								  						<input type="text" class="form-control" name="ime_1" placeholder="Unesite ime">
 								  					</td>
 								  					<td class="data_left col-xs-2">Email:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" placeholder="Unesite email">
+								  						<input type="text" class="form-control" name="email_1" placeholder="Unesite email">
 								  					</td>
 								  				</tr>
 								  				<tr>
 								  					<td class="data_left col-xs-2">Ime:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" placeholder="Unesite ime">
+								  						<input type="text" class="form-control" name="ime_2" placeholder="Unesite ime">
 								  					</td>
 								  					<td class="data_left col-xs-2">Email:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" placeholder="Unesite email">
+								  						<input type="text" class="form-control" name="email_2" placeholder="Unesite email">
 								  					</td>
 								  				</tr>
 								  				<tr>
 								  					<td class="data_left col-xs-2">Ime:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" placeholder="Unesite ime">
+								  						<input type="text" class="form-control" name="ime_3" placeholder="Unesite ime">
 								  					</td>
 								  					<td class="data_left col-xs-2">Email:</td>
 								  					<td class="data_right col-xs-4">
-								  						<input type="text" class="form-control" placeholder="Unesite email">
+								  						<input type="text" class="form-control" name="email_3" placeholder="Unesite email">
 								  					</td>
 								  				</tr>
 											</tbody>
 										</table>
 										<div class="row" style="margin-top: 20px">
 											<div class="col-xs-1 col-md-2"></div>
-											<div class="col-xs-4 col-md-3 my-button" align="center">
+											<div onclick="addPlayer()" class="col-xs-4 col-md-3 my-button" align="center">
 												<span class="glyphicon glyphicon-plus"></span>
-											    <span onclick="addPlayer()">Dodaj jos</span>
+											    <span>Dodaj jos</span>
 											</div>
 											<div class="col-xs-2 col-md-2"></div>
 											<div class="col-xs-4 col-md-3 my-button" align="center">
 											    <span class="glyphicon glyphicon-send"></span>
-											    <span onclick=" ">Posalji</span>
+											    <span onclick="generatorForm.submit()">Posalji</span>
 											</div>
 											<div class="col-xs-1 col-md-2"></div>
 										</div>
