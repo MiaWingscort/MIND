@@ -28,7 +28,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body >
 	<div class="container-fluid">
 		<?php
-			$this->load->view('includes/header-admin.php');
+			$nizUlaza = array();
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url(), "naziv"=>"Početna strana");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Kontakt", "naziv"=>"Kontakt");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Generators", "naziv"=>"Generator");
+			$nizUlaza[] = array("active"=>TRUE, "adresa"=> base_url() . "UklanjanjeKorisnika", "naziv"=>"Ukloni korisnika");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "reklamiranje", "naziv"=>"Postavite reklamu");
+			$data['nizUlaza']=$nizUlaza;
+			$this->load->view('includes/header-logout.php',$data);
 		?>
 		<div class="row content">
 			<?php 

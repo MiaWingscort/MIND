@@ -6,7 +6,6 @@
 <html>
 <head>
 	<title>Tajanstveni Deda Mraz</title>
-
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/mindCSS.css" rel="stylesheet">
 	<meta charset="UTF-8">
