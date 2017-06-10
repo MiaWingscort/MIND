@@ -15,6 +15,8 @@ class Prodavac extends CI_Model
 		$this->db->insert('prodavac', $prodavac);
 	}
 
+	
+
 }
 
 ?>

@@ -54,6 +54,21 @@ class Korisnik extends CI_Model
 		$this->db->where('SifKor', $korisnik->SifKor);
 		$this->db->update('korisnik', array('Lozinka' => MD5($korisnik->Lozinka)));
 	}
+	
+	function ukloniKorisnika($email){
+		$this->db->where('E-mail',$email);
+		$this->db->update('korisnik', array('Zabranjen' => 'D'));
+
+	}
+
+	function dohvatiSveKorisnike() {
+		$this->db->select('*');
+		$this->db->from('korisnik');
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
 }
 
 ?>
