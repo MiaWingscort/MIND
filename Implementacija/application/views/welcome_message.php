@@ -5,8 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 	<title>Tajanstveni Deda Mraz</title>
 
-	<link href=<?php echo base_url() . "css/bootstrap.css"?> rel="stylesheet">
-	<link href=<?php echo base_url() . "css/mindCSS.css"?>  rel="stylesheet">
+	<link href="<?php echo base_url();?>css/bootstrap.css" rel="stylesheet">
+	<link href="<?php echo base_url();?>css/mindCSS.css" rel="stylesheet">
 	<meta charset="UTF-8">
 
   	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <style type="text/css">
 	body {
-		background: url('./slike/background.jpg');
+		background: url("<?php echo base_url();?>/slike/background.jpg");
 		color: #ffffff;
 	} 
 	#loader {
@@ -107,16 +107,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body onload="initializer()">
 	<div class="container-fluid">
 		<?php
-			$this->load->view('includes/header-login.php');
+			$nizUlaza = array();
+			$nizUlaza[] = array("active"=>TRUE, "adresa"=> "#", "naziv"=>"Početna strana");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Kontakt", "naziv"=>"Kontakt");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Generators", "naziv"=>"Generator");
+			$data['nizUlaza']=$nizUlaza;
+			$this->load->view('includes/header-login.php',$data);
 		?>
 
 		<div id="loader">
-			<img src="./slike/giphy.gif">
+			<img src="<?php echo base_url();?>/slike/giphy.gif">
 		</div>
 		<div class="row content">
-			<?php 
-				$this->load->view('includes/left-banner.php'); 
-			?>
+			<div class="col-xs-0 col-sm-0 col-md-2">
+				<div id="leftBanner" class="row banner">
+					<img src="<?php echo base_url();?>/slike/nonstopshop.png">
+					<img src="<?php echo base_url();?>/slike/idealan.png">
+					<img src="<?php echo base_url();?>/slike/ludPoklon.png">
+				</div>
+			</div>
 
 			<div class="col-xs-12 col-sm-12 col-md-8">
 				<div id="main" class="col-xs-12">	
@@ -130,12 +141,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							  </div>
 							  <div class="panel-footer">
 							  	<p>
-							  		ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							  		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							  		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							  		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							  		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							  		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							  		Igra "Tajanstveni Deda Mraz" je originalno predpraznična igra za društvo, gde grupa ljudi tajno raspodeli ko kome kupuje poklon, i uoči praznika (Nove Godine, Božića...) obraduje dodeljenu osobu.
+							  		<br>
+							  		<br>Misija sajta je da igru proširimo na celu Srbiju!
+							  		<br>
+							  		<br>Povežite se sa ljudima iz svih delova zemlje, obradujte nekoga i neka neko obraduje Vas!
+							  		<br>
+							  		<br>Ukoliko je ovo Vaš prvi put na našem sajtu, možete se registrovati sa desne strane, ili ulogovati u gornjem desnom uglu. 
+							  		<br>Kao gost možete pogledati ideje za poklone na blogu koji je deo našeg sajta, klikom na "Ideje".
+							  		<br>Takođe, možete pogledati poklone koje su primili naši igrači iz prethodnih igara, klikom na "Galeriju".
+							  		<br>Za sva pitanja, kliknite na "Kontakt" i obratite nam se!
+							  		<br>
+							  		<br>Puno zabave Vam želimo!
+
 							  	</p>
 							  </div>
 							</div>
@@ -310,9 +328,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<img src="./slike/poklonshop.png">
 				</div>
 			</div>
-			<?php 
-				$this->load->view('includes/right-banner.php'); 
-			?>
+			<div class="col-xs-0 col-sm-0 col-md-2">
+				<div id="rightBanner" class="row banner">
+					<img src="./slike/nonstopshop.png">
+					<img src="./slike/idealan.png">
+					<img src="./slike/ludPoklon.png">
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

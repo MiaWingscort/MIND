@@ -14,9 +14,11 @@ class Login extends CI_Controller {
 	   	$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_checkCredentials');
 
 	   	if ($this->form_validation->run() == FALSE) {
+
 			echo "LOSI KREDENCIJALI";
 	   	} else {
-	   		echo "USPESNO STE LOGOVANI";
+	   		redirect('Welcome/ulogovan');
+	   		#echo "USPESNO STE LOGOVANI";
 	   	}
 
 	}
@@ -33,24 +35,22 @@ class Login extends CI_Controller {
 		if ($result) {
 			$sess_array = array();
 
-			foreach ($result as $row) {
+			
+		
 				$sess_array = array(
-					'id' => $row->SifKor, 
-					'email' => $row->{'E-mail'}
+					'id' => $result->SifKor, 
+					'email' => $result->{'E-mail'},
+					'tip_korisnika' => $result->{'Tip_korisnika'}
 				);
 
 				$this->session->set_userdata('logged_in', $sess_array);
-			}
+				
+			
+			
 			return TRUE;
 		} else {
 			$this->form_validation->set_message('check_database', 'Neispravan email ili sifra. Pokusajte ponovo');
 			return false;
 		}
-	}
-
-	public function logout() {
-		$this->session->unset_userdata('logged_in');
-		$this->session->sess_destroy();
-		redirect('/','refresh');
 	}
 }
