@@ -41,6 +41,9 @@ class Kupovina extends CI_Model
 		$this->db->update('kupovina'); 
 	}
 
+	function novaKupovina($kupovina) {
+		$this->db->insert('kupovina', $kupovina);
+	}
 }
 
 ?>

@@ -9,10 +9,37 @@ class Reklamiranje extends CI_Controller{
 	}
 
 	function index() {
+		if (!$this->session->userdata('logged_in')) {
+			redirect('Welcome');
+		}
+
+		$session_data = $this->session->userdata;
+		$session_data_array = $session_data['logged_in'];
+
+		$tip = $session_data_array['tip_korisnika'];
+
+		if ($tip != 'P') {
+			redirect('Welcome/ulogovan');
+		}
+		
 		$this->load->view('oglasi');
 	}
 
 	function dodajReklamu() {
+		if (!$this->session->userdata('logged_in')) {
+			redirect('Welcome');
+		}
+
+		$session_data = $this->session->userdata;
+		$session_data_array = $session_data['logged_in'];
+
+		$tip = $session_data_array['tip_korisnika'];
+
+		if ($tip != 'P') {
+			redirect('Welcome/ulogovan');
+		}
+
+
 		$config['upload_path']          = './uploads/oglasi/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 4096;
@@ -44,11 +71,9 @@ class Reklamiranje extends CI_Controller{
 	   		$website = $this->input->post('website');
 	   		$cena = $this->input->post('cena');
 
-	   		//$SifraKorisnika = $this->session->userdata('logged_in')['id'];
+	   		$SifraKorisnika = $session_data_array['id'];
 
-	   		//echo $this->session->userdata('logged_in');
-
-	   		$this->oglas->dodaj(array('SifKor' => 2, 'PutanjaDoSlike' => "./uploads/oglasi/" . $file_name , 'PutanjaOdSlike' => $website, 'Cena' => $cena, 'DatumKraja' => $datumKraja, 'DatumPocetka' => date("Y-m-d")));
+	   		$this->oglas->dodaj(array('SifKor' => $SifraKorisnika, 'PutanjaDoSlike' => "localhost:8080/ci/uploads/oglasi/" . $file_name , 'PutanjaOdSlike' => $website, 'Cena' => $cena, 'DatumKraja' => $datumKraja, 'DatumPocetka' => date("Y-m-d")));
 
 	   	}
 	   	
@@ -63,8 +88,7 @@ class Reklamiranje extends CI_Controller{
 		} else {
 			$putanje = $this->oglas->dohvatiPutanje($brojOglasa / 2 + $brojOglasa % 2, $brojOglasa / 2);
 		}
-
-
+		
 		echo json_encode($putanje);
 	}
 }
