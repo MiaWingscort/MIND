@@ -63,8 +63,7 @@ class Reklamiranje extends CI_Controller{
 		} else {
 			$putanje = $this->oglas->dohvatiPutanje($brojOglasa / 2 + $brojOglasa % 2, $brojOglasa / 2);
 		}
-
-
+		
 		echo json_encode($putanje);
 	}
 }

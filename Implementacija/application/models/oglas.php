@@ -18,7 +18,7 @@ class Oglas extends CI_Model{
 		return $brojredova[0]->Broj;
 	}
 	function dohvatiPutanje($start,$end){
-		$sqlQuery="SELECT PutanjaDoSlike FROM Oglas LIMIT $start,$end";
+		$sqlQuery="SELECT PutanjaDoSlike, PutanjaDoSlike FROM Oglas LIMIT $start,$end";
 		$query = $this->db->query($sqlQuery);
 		$redovi=$query->result();
 		return $redovi;
