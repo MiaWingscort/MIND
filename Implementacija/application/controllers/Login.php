@@ -40,7 +40,7 @@ class Login extends CI_Controller {
 				$sess_array = array(
 					'id' => $result->SifKor, 
 					'email' => $result->{'E-mail'},
-					'tip_korisnika' => $result->{'Tip_korisnika'}
+					'tip_korisnika' => $result->{'TipKorisnika'}
 				);
 
 				$this->session->set_userdata('logged_in', $sess_array);

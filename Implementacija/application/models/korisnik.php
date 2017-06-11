@@ -11,7 +11,7 @@ class Korisnik extends CI_Model
 	}
 
 	function prijavi($email, $lozinka) {
-		$this->db->select('SifKor, E-mail ,Lozinka');
+		$this->db->select('SifKor, E-mail, Lozinka, TipKorisnika');
 		$this->db->from('korisnik');
 		$this->db->where('E-mail', $email);
 		$this->db->where('Lozinka', $lozinka);
@@ -20,7 +20,7 @@ class Korisnik extends CI_Model
 		$query = $this->db->get();
 
 		if ($query->num_rows() == 1) {
-			return $query->result();
+			return $query->row();
 		} else {
 			return false;
 		}
