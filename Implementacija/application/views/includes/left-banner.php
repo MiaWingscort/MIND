@@ -13,7 +13,6 @@
 			        $('#leftBanner').append('<img src="' + result[i]['PutanjaDoSlike'] + '">');
 			    }
 		    }});
-
 		    $.ajax({url: "http://localhost:8080/ci/Reklamiranje/dohvatiSlikeOglasa/false", dataType: 'json', success: function(result){
 				console.log(result)
 		        for (var i = 0; i < result.length; i++) {

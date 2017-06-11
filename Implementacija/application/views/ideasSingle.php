@@ -85,6 +85,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<table style="margin-left: 30px; margin-right: 30px;">
 								<div>
 									<?php
+									$sess = $this->session->userdata('logged_in');
+									$tip= $sess['tip_korisnika'];
+									if($tip=="A")
+									{
 										echo 
 										"<div class=\"container-fluid\">
 						    				<tr>
@@ -101,6 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									</td>
 									</tr>
 						  				</div>";
+							  		}
 									?>
 
 								</div>

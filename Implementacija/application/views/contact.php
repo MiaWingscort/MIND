@@ -47,53 +47,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			?>
 			<div class="col-xs-12 col-sm-12 col-md-8">
 				<div id="main" class="col-xs-12">	
-					<!-- <div class="row">
-						<nav class="navbar navbar-inverse">
-						  <div class="container-fluid">
-						    <!-- <div class="navbar-header">
-						      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-						        <span class="icon-bar"></span>
-						        <span class="icon-bar"></span>
-						        <span class="icon-bar"></span>                        
-						      </button>
-						      <a href="#" class="navbar-left"><img src="./slike/animated_logo.gif"></a>
-						      <a class="navbar-brand christmas" href="#" style="height: 100%; padding: 5px;">
-						      	<img src="./slike/logoTekst.png" style="height: 60px; margin: 0 auto">
-						      </a>
-						    </div> 
-						    <div class="collapse navbar-collapse" id="myNavbar">
-						      <ul class="nav navbar-nav navbar-right">
-						      	<li>	
-						      		<form class="form-inline" action="/action_page.php" style="padding: 10px">
-									    <div class="form-group">
-									      <input type="email" class="form-control" id="email" placeholder="E-mail" name="email">
-									    </div>
-									    <div class="form-group">
-									      <input type="password" class="form-control" id="pwd" placeholder="Lozinka" name="pwd">
-									    </div>
-									 </form>
-								</li>
-						        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Prijavi se</a></li>
-						      </ul>
-						    </div>
-						  </div>
-						</nav>
-					</div>
-
-					<div class="row">
-						<nav class="navbar navbar-default">
-						  <div class="container-fluid">
-						    <ul class="nav navbar-nav">
-						      <li><a href="index.html">Početna strana</a></li>
-						      <li><a href="gallery.html">Galerija</a></li>
-						      <li><a href="idea.html">Ideje</a></li>
-						      <li class="active"><a href="#">Kontakt</a></li>
-						    </ul>
-						  </div>
-						</nav>
-					</div>
-					 -->
-
 					<div class="row">
 						<div class="col-xs-1 col-md-3"></div>
 						<div id="kontakt" class="col-xs-10 col-md-6">
