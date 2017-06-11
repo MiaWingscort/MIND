@@ -69,11 +69,19 @@ class Korisnik extends CI_Model
 
 		return $query->result();
 	}
-	function promeniEmailSlika($korisnik){
+	function promeniEmail($korisnik){
 		$this->db->set('E-mail', $korisnik['Email']); 
 		$this->db->where('SifKor', $korisnik['SifKor']); 
 		$this->db->update('Korisnik');  
 	}
+	
+	function promeniEmailSlika($korisnik){
+		$this->db->set('E-mail', $korisnik['Email']); 
+		$this->db->set('PutanjaDoProfilSlike', $korisnik['Slika']); 
+		$this->db->where('SifKor', $korisnik['SifKor']); 
+		$this->db->update('Korisnik');  
+	}
+	
 	function nadjiSaEmailomKorisnik($email){
 		$this->db->select('SifKor, E-mail, Lozinka, TipKorisnika, PutanjaDoProfilSlike');
 		$this->db->from('korisnik');

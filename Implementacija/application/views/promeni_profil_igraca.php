@@ -62,6 +62,13 @@ if($tip!="I")
 	function zatvoriGreske(ime) {
 		$('#' + ime).slideToggle(400);
 	}
+	
+	$(function(){
+ 		$('#molimTe').on('click',function(){
+ 			<?php $_POST['otkazi']="1";?>
+    		window.location.href = "<?php echo site_url('PonistavanjePrimaocaPoklona'); ?>";
+ 		});
+	});
 </script>
 
 </head>
@@ -93,7 +100,7 @@ if($tip!="I")
 							<div class="panel panel-default">
 							  <div class="panel-body" align="center">
 							   <span class="glyphicon glyphicon-user"></span>
-							   <label>Moj profil</label>
+							   <label>Menjam profil</label>
 							  </div>
 							  <div class="panel-footer">
 							  	<div class="row">
@@ -106,8 +113,8 @@ if($tip!="I")
 										  		<br>
 										  			<h4>Max. velicina 4MB</h4>
 												<br>
-										  			<label for="files" class="btn" style="border: 1px solid #e60000">Izaberi profilnu</label>
-										  			<input id="files" type="file" style="visibility:hidden;" name="userfile" size="4096" />
+										  			<label for="files" class="btn" style="border: 1px solid #e60000">Izaberi profilnu sliku</label>
+										  			<input id="files" type="file" style="visibility:hidden" name="userfile" size="4096">
 										  		<?php 
 											 		$this->load->view('includes/error.php'); 
 											 	?>
@@ -150,21 +157,18 @@ if($tip!="I")
 										    			<td class="data_right">
 										    			
 															<select name="dan">
-												  				<option value="<?php $time=strtotime($DatumRodjenja);
-																			echo date('j',$time);?>">
-																			
+												  				<option value="<?php echo $Dan; ?>">
+																		<?php echo $Dan; ?>	
 																</option>
 															</select>
 															<select name="mesec">
-												  				<option value="<?php $time=strtotime($DatumRodjenja);
-																			echo date('n',$time);?>">
-																			
+												  				<option value="<?php echo $Mesec; ?>">
+																			<?php echo $Mesec; ?>
 																</option>
 															</select>
 															<select name="godina">
-												  				<option value="<?php $time=strtotime($DatumRodjenja);
-																			echo date('Y',$time);?>">
-																			
+												  				<option value="<?php echo $Godina; ?>">
+																			<?php echo $Godina; ?>
 																</option>
 															</select>
 										    			
@@ -207,8 +211,16 @@ if($tip!="I")
 									  					<td class="data_left">Primalac poklona:</td>
 									  					<td class="data_right">
 									  						<div class="form-group">
-															  <input type="text" class="form-control" name="primalac" value="<?php echo $PrimalacIme; echo " "; echo $PrimalacPrezime; ?>">
+															  <input type="text" class="form-control" name="primalac" id="prim" value="<?php echo $PrimalacIme; echo " "; echo $PrimalacPrezime; ?>" readonly>
 															</div>
+															<?php
+															if ($PrimalacPrezime != "") echo '<div id="molimTe">
+																<span class="glyphicon glyphicon-remove" style="color:#e60000;"></span>
+
+																<span style="color:#e60000;">Otkaži</span>
+															</div>';
+															?>
+
 									  					</td>
 									  				</tr>
 									  				<tr>
@@ -222,7 +234,7 @@ if($tip!="I")
 									  	<div class="col-xs-12 col-sm-4">
 										    <div class="form-group">
 										     <label for="sel1">Interesovanja</label>
-											  <select multiple class="form-control" id="sel1" name="interesovanja[]">
+											  <select multiple class="form-control" id="sel1" name="interesovanja[]" size="11">
 											    <?php
 											    	foreach ($SvaInteresovanja as $interesovanje) {
 											    		if (array_key_exists($interesovanje, $MojaInteresovanja))
@@ -232,12 +244,12 @@ if($tip!="I")
 											    ?>
 											  </select>
 										      <br>
-										      <div class="row" align="center">
+										      <!-- <div class="row" align="center">
 										      	<span class="glyphicon glyphicon-plus"></span>
 										      	<span onclick="addInterest()">Dodaj interesovanje</span>
 										      	<span class="glyphicon glyphicon-remove"></span>
 										      	<span onclick="removeInterest()">Ukloni interesovanje</span>
-										      </div>
+										      </div> -->
 										    </div>
 									  	</div>
 								  </form>

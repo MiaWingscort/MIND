@@ -31,6 +31,15 @@ class Kupovina extends CI_Model
 			return null;
 		}
 	}
+	
+	function otkaziKupovinu($idPrimaoca){
+		$sess = $this->session->userdata('logged_in');
+		$sifra = $sess['id'];
+		$this->db->set('Status_', 'OTKAZANA');
+		$this->db->where('Primalac', $idPrimaoca);
+		$this->db->where('Kupac', $sifra);  
+		$this->db->update('kupovina'); 
+	}
 
 }
 
