@@ -121,13 +121,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<img src="<?php echo base_url();?>/slike/giphy.gif">
 		</div>
 		<div class="row content">
-			<div class="col-xs-0 col-sm-0 col-md-2">
-				<div id="leftBanner" class="row banner">
-					<img src="<?php echo base_url();?>/slike/nonstopshop.png">
-					<img src="<?php echo base_url();?>/slike/idealan.png">
-					<img src="<?php echo base_url();?>/slike/ludPoklon.png">
-				</div>
-			</div>
+			<?php 
+				$this->load->view('includes/left-banner.php'); 
+			?>
 
 			<div class="col-xs-12 col-sm-12 col-md-8">
 				<div id="main" class="col-xs-12">	
@@ -328,13 +324,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<img src="./slike/poklonshop.png">
 				</div>
 			</div>
-			<div class="col-xs-0 col-sm-0 col-md-2">
-				<div id="rightBanner" class="row banner">
-					<img src="./slike/nonstopshop.png">
-					<img src="./slike/idealan.png">
-					<img src="./slike/ludPoklon.png">
-				</div>
-			</div>
+			<?php 
+			   $this->load->view('includes/right-banner.php'); 
+			?>
 		</div>
 	</div>
 </body>
