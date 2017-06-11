@@ -59,6 +59,16 @@
 			mojaInteresovanja.value = "ne";
 		}
 	}
+
+	function izaberiNovog(button) {
+		var parentButton = $(button).parent(); 
+
+		var id = $($($(parentButton).parent()).first()).val();
+
+		$.ajax({url: "http://localhost:8080/ci/Pretraga/izaberi/" + id , dataType: 'json', success: function(result){
+	        alert("USPESNO STE IZABRALI OSOBU KOJOJ CETE KUPITI POKLON");
+		}});
+	}
 </script>
 
 </head>
@@ -86,7 +96,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-8">
 				<div id="main" class="col-xs-12">	
 					<div class="row padding-5">
-						<div id="pretraga" class="col-xs-6 col-md-7 col-lg-8">
+						<div id="pretraga" class="col-xs-12">
 							<div class="panel panel-default">
 								<div class="panel-body" align="center">
 									<span class="glyphicon glyphicon-search"></span>
@@ -111,7 +121,7 @@
 											</form>
 
 											<?php if (isset($korisnici)) {
-													echo "<div class=\"fopen(filename, mode)rm-group\">
+													echo "<div class=\"form-group\">
 															<h4> Pronadjeni korisnici</h4>
 															<table class=\"table\">
 																<thead>
@@ -124,11 +134,13 @@
 																<tbody>";
 													foreach ($korisnici as $korisnik) {
 															echo "<tr>" .
+																	"<td>" . $korisnik->SifKor . "</td>" .
 																	"<td>" . $korisnik->Ime . "</td>" .
 																	"<td>" . $korisnik->Prezime . "</td>" .
 																	"<td>" . $korisnik->Adresa . "</td>" .
 																	"<td>" . $korisnik->DatumRodjenja . "</td>" .
 																	"<td>" . $korisnik->Pol . "</td>" .
+																	"<td><input type=\"button\" onclick=\"izaberiNovog(this)\" value=\"Izaberi\" align=\"center\" ></input> </td>" .
 																 "</tr>";
 													}
 													echo	   "</tbody>
@@ -140,64 +152,6 @@
 
 											
 										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-6 col-md-5 col-lg-4">
-							<div class="panel panel-default">
-								<div class="panel-body" align="center">
-									<span class="glyphicon glyphicon-user"></span>
-									<label>Petar Petrovic</label>
-								</div>
-								<div class="panel-footer">
-									<div class="row">
-										<table class="table">
-										    <tbody>
-								  				<tr>
-								  					<td class="data_left">Datum rodjenja:</td>
-								  					<td rowspan="4" align="center">
-								  						<img id="profilePicture" src=<?php echo base_url() . "/slike/profilnaSlika.png"?>>
-								  						<input type="button" value="Promeni sliku" align="center" style="margin-top: 5px"></input>
-								  					</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_right">&nbsp&nbsp 1.1.1995</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_left">Pol</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_right">&nbsp&nbsp Muski</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_left">Email:</td>
-								  					<td class="data_right">pera@gmail.com</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_left">Adresa:</td>
-								  					<td class="data_right">Gandijeva 15</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_left">Obrazovanje:</td>
-								  					<td class="data_right">/</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_left">Primalac poklona:</td>
-								  					<td class="data_right">Marija Petrovic</td>
-								  				</tr>
-								  				<tr>
-								  					<td colspan="2">
-								  						<label for="sel1">Interesovanja</label>
-														<select multiple class="form-control" id="sel1">
-															<option>Automobili</option>
-															<option>Knjige</option>
-															<option>Vina</option>
-														</select>
-								  					</td>
-								  				</tr>
-							  				</tbody>
-						  				</table>
 									</div>
 								</div>
 							</div>
