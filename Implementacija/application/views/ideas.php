@@ -63,12 +63,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 	<div class="container-fluid">
 	<?php
+
+			$sess = $this->session->userdata('logged_in');
+			$tip= $sess['tip_korisnika'];
+
 			$nizUlaza = array();
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url(), "naziv"=>"Početna strana");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
 			$nizUlaza[] = array("active"=>TRUE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Kontakt", "naziv"=>"Kontakt");
-			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Generators", "naziv"=>"Generator");
+			if($tip=="A")
+			{
+				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "UklanjanjeKorisnika", "naziv"=>"Ukloni korisnika");
+			}
+			if($tip=="P")
+			{
+				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "reklamiranje", "naziv"=>"Postavite reklamu");
+			}
+			if($tip=="I")
+			{
+
+				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Generators", "naziv"=>"Generator");
+				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "pretraga", "naziv"=>"Pretraga korisnika");
+			}
 			$data['nizUlaza']=$nizUlaza;
 			$this->load->view('includes/header-logout.php',$data);
 		?>
@@ -81,8 +98,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					
 					<div class="row">
 						<div id="ideje" class="col-xs-0">
+						<?php 
+								$sess = $this->session->userdata('logged_in');
+								$tip= $sess['tip_korisnika'];
+								if($tip=="A")
+								{
+									echo "<tr>
+											<td colspan=\"2\" align=\"center\" >
+												<form method=\"post\" action=\"" . base_url() . "Ideje/nova\" >
+													<input type=\"submit\" style=\"color:#e60000; margin:2px;\"  value=\"Dodaj novu ideju\"></input>
+												</form>
+											</td>
+										</tr>";
+								}
+						?>
 							<table style="margin-left: 30px; margin-right: 30px;">								
-							<?php
+								<?php
 									foreach ($resultset as $result) {
 										echo "<tr>
 												<td class=\"title\" colspan=\"1\"><a href='Ideje/otvoriIdeju/" . $result['SifIdeja']."'>" . $result['Naziv'] . "
@@ -103,22 +134,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<td colspan=\"2\">
 										&nbsp;
 									</td>
-								</tr>
-								<tr>
-									<td align=\"center\">
-										<span class=\"glyphicon glyphicon-remove\"></span>
-										<span style=\"color:#e60000;\"><a href=\"Ideje/obrisi/". $result['SifIdeja']."\" onclick=\" return  confirm('Da li ste sigurni da zelite da obrisete ideju?')\">Obrisi</span>
-									</td>
-									<td align=\"center\">
-										<span class=\"glyphicon glyphicon-pencil\"></span>
-										<span style=\"color:#e60000;\"><a href=\"Ideje/uredi/" . $result['SifIdeja']. "\"> Uredi</span>
-									</td>
-									<td>
-										
-									</td>
 								</tr>";
-									}
-								?>
+
+								$sess = $this->session->userdata('logged_in');
+								$tip= $sess['tip_korisnika'];
+								if($tip=="A")
+								{
+									echo "<tr>
+										<td align=\"center\">
+											<span class=\"glyphicon glyphicon-remove\"></span>
+											<span style=\"color:#e60000;\"><a href=\"Ideje/obrisi/". $result['SifIdeja']."\" onclick=\" return  confirm('Da li ste sigurni da zelite da obrisete ideju?')\">Obrisi</span>
+										</td>
+										<td align=\"center\">
+											<span class=\"glyphicon glyphicon-pencil\"></span>
+											<span style=\"color:#e60000;\"><a href=\"Ideje/uredi/" . $result['SifIdeja']. "\"> Uredi</span>
+										</td>
+										<td>
+											
+										</td>
+									</tr>";
+								}
+							}
+						?>
 
 							</table>
 						</div>

@@ -33,6 +33,14 @@ class Ideje extends CI_Controller {
 		$this->ideja->obrisi($idIdeje);
 		$this->index();
 	}
+	public function nova(){
+		$resultset['SifIdeja']=0;
+		$resultset['Naziv']="";
+		$resultset['Tekst']="";
+		$resultset['SifKor']=$this->session->userdata('logged_in')['id'];
+		$resultset['PutanjaDoSlike']="./uploads/ideje/prazna.png";
+		$this->load->view('ideasEdit', $resultset);
+	}
 
 	public function dodajSliku($idIdeje){
 

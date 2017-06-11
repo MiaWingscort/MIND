@@ -107,6 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body onload="initializer()">
 	<div class="container-fluid">
 		<?php
+			$sess = $this->session->userdata('logged_in');
 			$tip= $sess['tip_korisnika'];
 
 
@@ -115,7 +116,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Kontakt", "naziv"=>"Kontakt");
-			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Generators", "naziv"=>"Generator");
 			if($tip=="A")
 			{
 				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "UklanjanjeKorisnika", "naziv"=>"Ukloni korisnika");
@@ -126,7 +126,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 			if($tip=="I")
 			{
-			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "pretraga", "naziv"=>"Pretraga korisnika");
+
+				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Generators", "naziv"=>"Generator");
+				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "pretraga", "naziv"=>"Pretraga korisnika");
 			}
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "PregledProfila", "naziv"=>"Moj profil");
 			$data['nizUlaza']=$nizUlaza;
