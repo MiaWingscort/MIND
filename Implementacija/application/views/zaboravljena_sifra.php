@@ -46,7 +46,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body onload="initializer()">
 	<div class="container-fluid">
 		<?php
-			$this->load->view('includes/header-login.php');
+			$nizUlaza = array();
+			$nizUlaza[] = array("active"=>TRUE, "adresa"=> "#", "naziv"=>"Početna strana");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Kontakt", "naziv"=>"Kontakt");
+			$data['nizUlaza']=$nizUlaza;
+			$this->load->view('includes/header-login.php',$data);
 		?>
 		<div class="row content">
 			<?php 

@@ -1,6 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+$sess = $this->session->userdata('logged_in');
+$tip= $sess['tip_korisnika'];
+if($tip=="I" || $tip=="P" || $tip=="A")
+{
+	redirect('Welcome/ulogovan');
+}
+?>
+
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Tajanstveni Deda Mraz</title>

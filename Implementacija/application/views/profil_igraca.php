@@ -1,3 +1,19 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+$sess = $this->session->userdata('logged_in');
+$tip= $sess['tip_korisnika'];
+if($tip!="I")
+{
+	if($tip=="A" || $tip=="P")
+	{
+		redirect('Welcome/ulogovan');
+	}
+	else 
+	{
+		redirect('Welcome');
+	}
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,50 +41,27 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="row">
+					<?php
+						$sess = $this->session->userdata('logged_in');
+						$tip= $sess['tip_korisnika'];
+						$nizUlaza = array();
+						$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url(), "naziv"=>"Početna strana");
+						$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
+						$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
+						$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "contact.php", "naziv"=>"Kontakt");
+						$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Generators", "naziv"=>"Generator");
+						$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "pretraga", "naziv"=>"Pretraga korisnika");
+						$nizUlaza[] = array("active"=>TRUE, "adresa"=> base_url() . "PregledProfila", "naziv"=>"Moj profil");
+						$data['nizUlaza']=$nizUlaza;
+						$this->load->view('includes/header-logout.php',$data);
+					?>
+
+		<div class="row content">
 			<?php 
 			   $this->load->view('includes/left-banner.php'); 
 			?>
 			<div class="col-xs-12 col-sm-12 col-md-8">
 				<div id="main" class="col-xs-12">	
-					<div class="row">
-						<nav class="navbar navbar-inverse">
-						  <div class="container-fluid">
-						    <div class="navbar-header">
-						      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-						        <span class="icon-bar"></span>
-						        <span class="icon-bar"></span>
-						        <span class="icon-bar"></span>                        
-						      </button>
-						      <a href="#" class="navbar-left"><img src="./slike/animated_logo.gif"></a>
-						      <a class="navbar-brand christmas" href="#" style="height: 100%; padding: 5px;">
-						      	<img src=<?php echo base_url() . "/slike/logoTekst.png"?> style="height: 60px; margin: 0 auto">
-						      </a>
-						    </div>
-						    <div class="collapse navbar-collapse" id="myNavbar">
-						      <ul class="nav navbar-nav navbar-right">
-						        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Odjavi se</a></li>
-						      </ul>
-						    </div>
-						  </div>
-						</nav>
-					</div>
-
-					<div class="row">
-						<nav class="navbar navbar-default">
-						  <div class="container-fluid">
-						    <ul class="nav navbar-nav">
-						      <li class="active"><a href="#">Moj Profil</a></li>
-						      <li><a href="gallery.html">Galerija</a></li>
-						      <li><a href="idea.html">Ideje</a></li>
-						      <li><a href="contact.html">Kontakt</a></li>
-						      <li><a href="generator.html">Generator</a></li>
-						      <li><a href="search.html">Pretraga</a></li>
-						    </ul>
-						  </div>
-						</nav>
-					</div>
-
 					<div class="row">
 						<div class="col-xs-12 padding-5">
 							<div class="panel panel-default">

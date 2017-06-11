@@ -1,5 +1,18 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+	defined('BASEPATH') OR exit('No direct script access allowed');
+	$sess = $this->session->userdata('logged_in');
+	$tip= $sess['tip_korisnika'];
+	if($tip!="A")
+	{
+		if($tip=="I" || $tip=="P")
+		{
+			redirect('Welcome/ulogovan');
+		}
+		else 
+		{
+			redirect('Welcome');
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,12 +54,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 	<div class="container-fluid">
 	<?php
+
+			$sess = $this->session->userdata('logged_in');
+			$tip= $sess['tip_korisnika'];
+
 			$nizUlaza = array();
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url(), "naziv"=>"Početna strana");
 			$nizUlaza[] = array("active"=>TRUE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Kontakt", "naziv"=>"Kontakt");
-			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Generators", "naziv"=>"Generator");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "UklanjanjeKorisnika", "naziv"=>"Ukloni korisnika");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "PregledProfila", "naziv"=>"Moj profil");
 			$data['nizUlaza']=$nizUlaza;
 			$this->load->view('includes/header-logout.php',$data);
 		?>
