@@ -9,7 +9,6 @@ class Registracija extends CI_Controller {
 	   $this->load->model('igrac', '', TRUE);
 	}
 
-
 	function noviIgrac() {
 		$this->load->library('form_validation');
 		
@@ -51,13 +50,22 @@ class Registracija extends CI_Controller {
 	   		$rez = $this->korisnik->postoji(array('E-mail' => $email, 'Lozinka' => $lozinka));
 
 	   		if ($rez) {
-
 	   			$this->session->set_flashdata('greske-igrac', 'Korisnik sa email adresom ' . $email .' je vec registrovan.');
-			    redirect('/');
+			    redirect('Welcome');
 	   		} else {
 	   			$id = $this->korisnik->dodaj(array('E-mail' => $email, 'Lozinka' => $lozinka, 'Zabranjen' => 'N', 'TipKorisnika' => 'I'));
 	   			$this->igrac->dodaj(array('SifKor' => $id, 'Ime' => $ime, 'Prezime' => $prezime, 'Adresa' => $adresa, 'Telefon' => $telefon, 'DatumRodjenja' => $godina . '-' . $mesec . '-' . $dan, 'Pol' => $pol));
-	   			echo "UPISAN NOVI KORISNIK";
+	   			
+	   			$sess_array = array();
+		
+				$sess_array = array(
+					'id' => $id, 
+					'email' => $email,
+					'tip_korisnika' => 'I'
+				);
+
+				$this->session->set_userdata('logged_in', $sess_array);
+				redirect('Welcome/ulogovan');
 	   		}
 
 	   	}
@@ -97,7 +105,16 @@ class Registracija extends CI_Controller {
 	   		} else {
 	   			$id = $this->korisnik->dodaj(array('E-mail' => $email, 'Lozinka' => $lozinka, 'Zabranjen' => 'N', 'TipKorisnika' => 'P'));
 	   			$this->prodavac->dodaj(array('SifKor' => $id, 'Naziv' => $naziv, 'PIB' => $pib, 'Adresa' => $adresa, 'Telefon' => $telefon));
-	   			echo "UPISAN NOVI PRODAVAC";
+	   			$sess_array = array();
+		
+				$sess_array = array(
+					'id' => $id, 
+					'email' => $email,
+					'tip_korisnika' => 'P'
+				);
+
+				$this->session->set_userdata('logged_in', $sess_array);
+				redirect('Welcome/ulogovan');
 	   		}
 	   	}
 	}
