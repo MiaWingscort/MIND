@@ -61,9 +61,7 @@
 	}
 
 	function izaberiNovog(button) {
-		var parent = $(button).parent(); 
-
-		var id = $($(parent).first()).val();
+		var id = $($($(parentButton).parent()).first()).val();
 
 		$.ajax({url: "http://localhost:8080/ci/Pretraga/izaberi/" + id , dataType: 'json', success: function(result){
 	        alert("USPESNO STE IZABRALI OSOBU KOJOJ CETE KUPITI POKLON");
