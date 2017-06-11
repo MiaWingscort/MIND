@@ -6,8 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 	<title>Tajanstveni Deda Mraz</title>
 
-	<link href=<?php echo base_url() . "css/bootstrap.css"?> rel="stylesheet">
-	<link href=<?php echo base_url() . "css/mindCSS.css"?>  rel="stylesheet">
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/mindCSS.css" rel="stylesheet">
 	<meta charset="UTF-8">
 
   	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		?>
 		<div class="row content">
 			<?php 
-				$this->load->view('includes/left-banner.php'); 
+			   $this->load->view('includes/left-banner.php'); 
 			?>
 
 			<div class="col-xs-12 col-sm-12 col-md-8">
@@ -92,7 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 			<?php 
-				$this->load->view('includes/right-banner.php'); 
+			   $this->load->view('includes/right-banner.php'); 
 			?>
 		</div>
 	</div>

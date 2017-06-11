@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="row content">
 			<?php 
 				$this->load->view('includes/left-banner.php'); 
-?>
+			?>
 				
 			 <div class="col-xs-12 col-sm-12 col-md-8">
 				<div id="main" class="col-xs-12">	
