@@ -44,7 +44,7 @@
 						        <span class="icon-bar"></span>
 						        <span class="icon-bar"></span>                        
 						      </button>
-						      <a href="#" class="navbar-left"><img src="./slike/animated_logo.gif"></a>
+						      <a href="#" class="navbar-left"><img src=<?php echo base_url() ."./slike/animated_logo.gif"?>></a>
 						      <a class="navbar-brand christmas" href="#" style="height: 100%; padding: 5px;">
 						      	<img src=<?php echo base_url() . "/slike/logoTekst.png"?> style="height: 60px; margin: 0 auto">
 						      </a>
@@ -89,7 +89,7 @@
 									  	</div>
 								  	</div>
 								  	<div class="col-xs-12 col-sm-5"> 
-								  		<form name="forma_profil_igraca" method="POST" action=<?php echo base_url().'PromenaProfila'?>>
+								  		<form name="forma_profil_administratora" method="POST" action=<?php echo base_url().'PromenaProfila'?>>
 									  		<table class="table table-hover">
 											    <tbody>
 												    <tr>
@@ -97,40 +97,22 @@
 									  					<td class="data_right" id="ime"><?php echo $Ime; echo " "; echo $Prezime; ?></td>
 
 									  				</tr>
-									  				<tr>
-									  					<td class="data_left">Datum rodjenja:</td>
-									  					<td class="data_right" id="datumRodjenja"><?php echo date('j.n.Y.', $DatumRodjenja);?></td>
-									  				</tr>
-									  				<tr>
-									  					<td class="data_left">Pol</td>
-									  					<td class="data_right" id="pol"><?php if ($Pol == 'M') echo 'Muški'; else echo 'Ženski';?></td>
-									  				</tr>
+									  				
 									  				<tr>
 									  					<td class="data_left">E-mail:</td>
-									  					<td class="data_right" id="e-mail"><?php echo $Email;?></td>
+									  					<td class="data_right" id="email"><?php echo $Email;?></td>
 									  				</tr>
-									  				<tr>
-									  					<td class="data_left">Adresa:</td>
-									  					<td class="data_right" id="adresa"><?php echo $Adresa;?></td>
-									  				</tr>
-									  				<tr>
-									  					<td class="data_left">Telefon:</td>
-									  					<td class="data_right" id="telefon"><?php echo $Telefon;?></td>
-									  				</tr>
-									  				<tr>
-									  					<td class="data_left">Primalac poklona:</td>
-									  					<td class="data_right" id="primalac"><?php echo $PrimalacIme." ".$PrimalacPrezime; ?></td>
-									  				</tr>
+									  				
 									  				<tr>
 									  					<td colspan="2" align="center">
-									  						<input type="submit" value="Radi na profilu"></input>
+									  						<input type="submit" value="Radi na profilu"</input>
 									  					</td>
 								  					</tr>
 											    </tbody>
 										  	</table>
 								  		</form>
 								  	</div>
-								  	<div class="col-xs-12 col-sm-4">
+								  	<!-- <div class="col-xs-12 col-sm-4">
 								  		<form>
 										    <div class="form-group">
 										     <label for="sel1">Interesovanja</label>
@@ -141,7 +123,7 @@
 										      
 										    </div>
 										</form>
-								  	</div>
+								  	</div> -->
 							  	</div>
 							  </div>
 							</div>

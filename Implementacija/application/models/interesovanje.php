@@ -29,6 +29,30 @@ class Interesovanje extends CI_Model
 			return false;
 		}
 	}
+	function svaInteresovanja(){
+		$this->db->select('Naziv');
+		$this->db->from('interesovanje');
+
+		$query = $this->db->get();
+
+		return $query->result_array();
+	}
+
+	function nadjiInteresovanjePoImenu($ime){
+		$this->db->select('SifInt');
+		$this->db->from('interesovanje');
+		$this->db->where('Naziv', $ime);
+		$this->db->limit(1);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() == 1) {
+			return $query->row();
+		} else {
+			return false;
+		}
+	}
+
 
 }
 
