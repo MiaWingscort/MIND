@@ -35,7 +35,9 @@ if($tip!="P")
 </style>
 
 <script type="text/javascript">
-
+	function zatvoriGreske(ime) {
+		$('#' + ime).slideToggle(400);
+	}
 </script>
 
 </head>
@@ -67,19 +69,38 @@ if($tip!="P")
 							<div class="panel panel-default">
 							  <div class="panel-body" align="center">
 							   <span class="glyphicon glyphicon-user"></span>
-							   <label>Profil prodavca</label>
+							   <label>Menjam profil</label>
 							  </div>
 							  <div class="panel-footer">
 							  	<div class="row">
+							  		<?php echo form_open_multipart('PromenaProfila/promeniProdavca', array('method' => 'POST', 'name' => "forma_promeni_profil_prodavca"));?>
 							  		<form name="forma_promeni_profil_prodavca" method="POST" action=<?php echo base_url().'PromenaProfila/promeniProdavca'?>>
 								  		<div class="col-xs-12 col-sm-3" align="center">
 									  		<div class="form-group">
 										  		<img src=<?php echo base_url($Slika)?> style="width:150px; height: 150px">
-										  		<input type="button" value="Promeni sliku" align="center"></input>
-										  		<h4>Max. velicina 4MB</h4>
+										  		<br>
+										  		<br>
+										  			<h4>Max. velicina 4MB</h4>
+												<br>
+										  			<label for="files" class="btn" style="border: 1px solid #e60000">Izaberi profilnu sliku</label>
+										  			<input id="files" type="file" style="visibility:hidden" name="userfile" size="4096">
+										  		<?php 
+											 		$this->load->view('includes/error.php'); 
+											 	?>
 										  	</div>
 									  	</div>
 									  	<div class="col-xs-12 col-sm-5"> 
+									  		<?php if ($this->session->flashdata('greske-prodavac')): ?>
+									 		<div id="greske-prodavac" class="alert alert-danger collapse in">
+												<strong>GRESKA!</strong>
+												<?php
+													echo $this->session->flashdata('greske-prodavac');
+												?>
+												<div align="center" style="margin-top: 5px;">
+													<button type="button" class="btn btn-warning" onclick="zatvoriGreske('greske-prodavac')">Pokusajte ponovo</button>
+												</div>
+											</div>
+											<?php endif ?> 
 									  		<table class="table table-hover">
 											    <tbody>
 												    <tr>
@@ -146,7 +167,7 @@ if($tip!="P")
 									  	<div class="col-xs-12 col-sm-4">
 										    <div class="form-group">
 										     <label for="sel1">Ciljna interesovanja</label>
-											  <select multiple class="form-control" id="sel1" name="interesovanja[]">
+											  <select multiple class="form-control" id="sel1" name="interesovanja[]" size="6">
 											    <?php
 											    	foreach ($SvaInteresovanja as $interesovanje) {
 											    		if (array_key_exists($interesovanje, $MojaInteresovanja))
@@ -156,12 +177,12 @@ if($tip!="P")
 											    ?>
 											  </select>
 										      <br>
-										      <div class="row" align="center">
+										      <!-- <div class="row" align="center">
 										      	<span class="glyphicon glyphicon-plus"></span>
 										      	<span onclick="addInterest()">Dodaj interesovanje</span>
 										      	<span class="glyphicon glyphicon-remove"></span>
 										      	<span onclick="removeInterest()">Ukloni interesovanje</span>
-										      </div>
+										      </div> -->
 										    </div>
 									  	</div>
 									</form>

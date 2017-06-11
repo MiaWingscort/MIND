@@ -38,7 +38,7 @@
 	   				$primalacIme = $imePrimaoca->Ime;
 	   				$primalacPrezime = $imePrimaoca->Prezime;
 	   			}else{
-	   				$primalacIme = 'Nije vam dodeljen ili niste izabrali primaoca poklona!';
+	   				$primalacIme = 'Nije odabran!';
 	   				$primalacPrezime = '';
 	   			}
 	   			

@@ -69,7 +69,7 @@ if($tip!="P")
 							<div class="panel panel-default">
 							  <div class="panel-body" align="center">
 							   <span class="glyphicon glyphicon-user"></span>
-							   <label>Profil prodavca</label>
+							   <label>Moj profil</label>
 							  </div>
 							  <div class="panel-footer">
 							  	<div class="row">
@@ -82,6 +82,7 @@ if($tip!="P")
 								  	<div class="col-xs-12 col-sm-5"> 
 								  		<form name="forma_profil_prodavca" method="POST" action=<?php echo base_url().'PromenaProfila'?>>
 									  		<table class="table table-hover">
+											    <table class="table table-hover">
 											    <tbody>
 												    <tr>
 									  					<td class="data_left">Naziv:</td>

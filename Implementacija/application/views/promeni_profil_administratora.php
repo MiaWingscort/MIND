@@ -35,7 +35,9 @@ if($tip!="A")
 </style>
 
 <script type="text/javascript">
-
+	function zatvoriGreske(ime) {
+		$('#' + ime).slideToggle(400);
+	}
 </script>
 
 </head>
@@ -67,34 +69,63 @@ if($tip!="A")
 							<div class="panel panel-default">
 							  <div class="panel-body" align="center">
 							   <span class="glyphicon glyphicon-user"></span>
-							   <label>Moj profil</label>
+							   <label>Menjam profil</label>
 							  </div>
 							  <div class="panel-footer">
 							  	<div class="row">
-							  		<div class="col-xs-12 col-sm-3" align="center">
-								  		<div class="form-group">
-									  		<img src=<?php echo base_url($Slika)?> style="width:150px; height: 150px">
-									  		<input type="button" value="Promeni sliku" align="center"></input>
-									  		<h4>Max. velicina 4MB</h4>
+							  		<?php echo form_open_multipart('PromenaProfila/promeniAdministratora', array('method' => 'POST', 'name' => "forma_promeni_administratora"));?>
+							  		<form name="forma_promeni_administratora" method="POST" action="<?php echo base_url().'PromenaProfila/promeniAdministratora'?>">
+							  			
+								  		<div class="col-xs-12 col-sm-3" align="center">
+									  		<div class="form-group">
+										  		<img src=<?php echo base_url($Slika)?> style="width:150px; height: 150px">
+										  		<br>
+										  		<br>
+										  			<h4>Max. velicina 4MB</h4>
+												<br>
+										  			<label for="files" class="btn" style="border: 1px solid #e60000">Izaberi profilnu sliku</label>
+										  			<input id="files" type="file" style="visibility:hidden" name="userfile" size="4096">
+										  		<?php 
+											 		$this->load->view('includes/error.php'); 
+											 	?>
+										  	</div>
 									  	</div>
-								  	</div>
-								  	<div class="col-xs-12 col-sm-5"> 
-								  		<form name="playerProfileForm" method="POST" action=<?php echo base_url().'PromenaProfila/promeniAdministratora'?>>
+									  
+									  	<div class="col-xs-12 col-sm-5">
+									  		<?php if ($this->session->flashdata('greske-administrator')): ?>
+									 		<div id="greske-administrator" class="alert alert-danger collapse in">
+												<strong>GRESKA!</strong>
+												<?php
+													echo $this->session->flashdata('greske-administrator');
+												?>
+												<div align="center" style="margin-top: 5px;">
+													<button type="button" class="btn btn-warning" onclick="zatvoriGreske('greske-administrator')">Pokusajte ponovo</button>
+												</div>
+											</div>
+										  <?php endif ?> 
 									  		<table class="table table-hover">
 											    <tbody>
 												    <tr>
-									  					<td class="data_left">Ime i prezime:</td>
+									  					<td class="data_left">Ime:</td>
 									  					<td class="data_right">
 									  						<div class="form-group">
-															  <input type="text" class="form-control" name="imePrezime" value="<?php echo $Ime; echo " "; echo $Prezime; ?>">
+															  <input type="text" class="form-control" name="ime" value="<?php echo $Ime; ?>">
 															</div>
 									  					</td>
 									  				</tr>
-									  				
+									  				<tr>
+									  					<td class="data_left">Prezime:</td>
+									  					<td class="data_right">
+									  						<div class="form-group">
+															  <input type="text" class="form-control" name="prezime" value="<?php echo $Prezime; ?>">
+															</div>
+									  					</td>
+									  				</tr>
+									  				<tr>
 									  					<td class="data_left">E-mail:</td>
 									  					<td class="data_right">
 									  						<div class="form-group">
-															  <input type="email" class="form-control" name="email" value=<?php echo $Email;?>>
+															  <input type="email" class="form-control" name="email" value="<?php echo $Email;?>">
 															</div>
 									  					</td>
 									  				</tr>
@@ -107,27 +138,10 @@ if($tip!="A")
 								  					
 											    </tbody>
 										  	</table>
+										  
 								  		</form>
 								  	</div>
-								  	<!-- <div class="col-xs-12 col-sm-4">
-								  		<form>
-										    <div class="form-group">
-										     <label for="sel1">Interesovanja</label>
-											  <select multiple class="form-control" id="sel1">
-											    <option>Automobili</option>
-											    <option>Knjige</option>
-											    <option>Vina</option>
-											  </select>
-										      <br>
-										      <div class="row" align="center">
-										      	<span class="glyphicon glyphicon-plus"></span>
-										      	<span onclick="addInterest()">Dodaj interesovanje</span>
-										      	<span class="glyphicon glyphicon-remove"></span>
-										      	<span onclick="removeInterest()">Ukloni interesovanje</span>
-										      </div>
-										    </div>
-										</form>
-								  	</div> -->
+								  	
 							  	</div>
 							  </div>
 							</div>
