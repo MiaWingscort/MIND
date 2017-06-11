@@ -1,14 +1,10 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Tajanstveni Deda Mraz</title>
 
-	<link href="<?php echo base_url();?>css/bootstrap.css" rel="stylesheet">
-	<link href="<?php echo base_url();?>css/mindCSS.css" rel="stylesheet">
+	<link href=<?php echo base_url() . "css/bootstrap.css"?> rel="stylesheet">
+	<link href=<?php echo base_url() . "css/mindCSS.css"?> rel="stylesheet">
 	<meta charset="UTF-8">
 
   	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <style type="text/css">
 	body {
-		background: url('./slike/background.jpg');
+		background: url("<?php echo base_url() . '/slike/background.jpg'?>");
 		color: #ffffff;
 	}
 </style>
@@ -48,9 +44,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						        <span class="icon-bar"></span>
 						        <span class="icon-bar"></span>                        
 						      </button>
-						      <a href="#" class="navbar-left"><img src="./slike/animated_logo.gif"></a>
+						      <a href="#" class="navbar-left"><img src=<?php echo base_url() . "/slike/animated_logo.gif"?>></a>
 						      <a class="navbar-brand christmas" href="#" style="height: 100%; padding: 5px;">
-						      	<img src="./slike/logoTekst.png" style="height: 60px; margin: 0 auto">
+						      	<img src=<?php echo base_url() . "/slike/logoTekst.png"?> style="height: 60px; margin: 0 auto">
 						      </a>
 						    </div>
 						    <div class="collapse navbar-collapse" id="myNavbar">
@@ -87,38 +83,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							  	<div class="row">
 							  		<div class="col-xs-12 col-sm-3" align="center">
 								  		<div class="form-group">
-									  		<img src="./slike/profilnaSlika.png" style="width:150px; height: 150px">
-									  		<input type="button" value="Promeni sliku" align="center"></input>
-									  		<h4>Max. velicina 4MB</h4>
+									  		<img src=<?php echo base_url($Slika)?> style="width:150px; height: 150px">
+									  		
 									  	</div>
 								  	</div>
 								  	<div class="col-xs-12 col-sm-5"> 
-								  		<form>
+								  		<form name="forma_profil_prodavca" method="POST" action=<?php echo base_url().'PromenaProfila'?>>
 									  		<table class="table table-hover">
 											    <tbody>
 												    <tr>
 									  					<td class="data_left">Naziv:</td>
-									  					<td class="data_right">DexyCo</td>
+									  					<td class="data_right"><?php echo $Naziv;?></td>
 									  				</tr>
 									  				<tr>
 									  					<td class="data_left">PIB:</td>
-									  					<td class="data_right">5125415</td>
+									  					<td class="data_right"><?php echo $PIB;?></td>
 									  				</tr>
 									  				<tr>
-									  					<td class="data_left">Email:</td>
-									  					<td class="data_right">info@dexyco.rs</td>
+									  					<td class="data_left">E-mail:</td>
+									  					<td class="data_right"><?php echo $Email;?></td>
 									  				</tr>
 									  				<tr>
 									  					<td class="data_left">Adresa:</td>
-									  					<td class="data_right">Bulevar Arsenija Carnojevica 15</td>
+									  					<td class="data_right"><?php echo $Adresa;?></td>
 									  				</tr>
 									  				<tr>
 									  					<td class="data_left">Kontakt telefon:</td>
-									  					<td class="data_right">+381 11 333 5244</td>
+									  					<td class="data_right"><?php echo $Telefon;?></td>
+									  				</tr>
+									  				<tr>
+									  					<td class="data_left">Website:</td>
+									  					<td class="data_right"><a href=<?php echo $Website;?>><?php echo $Website;?></a></td>
 									  				</tr>
 									  				<tr>
 									  					<td colspan="2" align="center">
-									  						<input type="button" value="Radi na profilu"></input>
+									  						<input type="submit" value="Radi na profilu"></input>
 									  					</td>
 								  					</tr>
 											    </tbody>
@@ -128,14 +127,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								  	<div class="col-xs-12 col-sm-4">
 								  		<form>
 										    <div class="form-group">
-										      <label for="sel1">Interesovanja</label>
+										      <label for="sel1">Ciljna interesovanja</label>
 											  <select multiple class="form-control" id="sel1">
-											    <option>Automobili</option>
-											    <option>Knjige</option>
-											    <option>Vina</option>
+											  	<option><?php echo implode('</option><option>', $Interesovanja); ?>
+											  	</option>
 											  </select>
-										      <br>
-										      <input type="button" value="Dodaj interesovanja"></input>
+										      
 										    </div>
 										</form>
 								  	</div>
@@ -147,14 +144,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 				</div>
 				<div class="row bottomBanner">
-					<img src="./slike/poklonshop.png">
+					<img src=<?php echo base_url() . "/slike/poklonshop.png"?>>
 				</div>
 			</div>
 			<div class="col-xs-0 col-sm-0 col-md-2">
 				<div id="rightBanner" class="row banner">
-					<img src="./slike/nonstopshop.png">
-					<img src="./slike/idealan.png">
-					<img src="./slike/ludPoklon.png">
+					<img src=<?php echo base_url() . "/slike/nonstopshop.png"?>>
+					<img src=<?php echo base_url() . "/slike/idealan.png"?>>
+					<img src=<?php echo base_url() . "/slike/ludPoklon.png"?>>
 				</div>
 			</div>
 		</div>

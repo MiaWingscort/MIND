@@ -53,6 +53,30 @@ class Igrac extends CI_Model
 
 		return $interesovanja;
 	}
+	function promeni($igr){
+		$this->db->set('Ime', $igr['Ime']);
+		$this->db->set('Prezime', $igr['Prezime']);  
+		$this->db->set('Adresa', $igr['Adresa']);  
+		$this->db->set('Telefon', $igr['Telefon']);  
+		$this->db->set('DatumRodjenja', $igr['DatumRodjenja']);
+		$this->db->set('Pol', $igr['Pol']);  
+		$this->db->where('SifKor', $igr['SifKor']); 
+		$this->db->update('igrac');  
+	}
+	function nadjiSaSifrom($sifra) {
+		$this->db->select('SifKor, Ime, Prezime, Adresa, Telefon, DatumRodjenja, Pol');
+		$this->db->from('igrac');
+		$this->db->where('SifKor', $sifra);
+		$this->db->limit(1);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() == 1) {
+			return $query->row();
+		} else {
+			return false;
+		}
+	}
 }
 
 ?>

@@ -94,7 +94,18 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="row">
+		<?php
+			$nizUlaza = array();
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url(), "naziv"=>"Početna strana");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Kontakt", "naziv"=>"Kontakt");
+			$nizUlaza[] = array("active"=>TRUE, "adresa"=> base_url() . "Generators", "naziv"=>"Generator");
+			$data['nizUlaza']=$nizUlaza;
+			$this->load->view('includes/header-logout.php',$data);
+		?>
+
+		<div class="row content">
 			<div class="col-xs-0 col-sm-0 col-md-2">
 				<div id="leftBanner" class="row banner">
 					<img src="<?php echo base_url();?>/slike/nonstopshop.png">
@@ -104,43 +115,6 @@
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-8">
 				<div id="main" class="col-xs-12">	
-					<div class="row">
-						<nav class="navbar navbar-inverse">
-						  <div class="container-fluid">
-						    <div class="navbar-header">
-						      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-						        <span class="icon-bar"></span>
-						        <span class="icon-bar"></span>
-						        <span class="icon-bar"></span>                        
-						      </button>
-						      <a href="#" class="navbar-left"><img src="./slike/animated_logo.gif"></a>
-						      <a class="navbar-brand christmas" href="#" style="height: 100%; padding: 5px;">
-						      	<img src="<?php echo base_url();?>/slike/logoTekst.png" style="height: 60px; margin: 0 auto">
-						      </a>
-						    </div>
-						    <div class="collapse navbar-collapse" id="myNavbar">
-						      <ul class="nav navbar-nav navbar-right">
-						        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Odjavi se</a></li>
-						      </ul>
-						    </div>
-						  </div>
-						</nav>
-					</div>
-
-					<div class="row">
-						<nav class="navbar navbar-default">
-						  <div class="container-fluid">
-						    <ul class="nav navbar-nav">
-						      <li><a href="profile.html">Moj Profil</a></li>
-						      <li><a href="<?php echo base_url();?>Galerija">Galerija</a></li>
-						      <li><a href="<?php echo base_url();?>Ideje">Ideje</a></li>
-						      <li><a href="contact.html">Kontakt</a></li>
-						      <li class="active"><a href="<?php echo base_url();?>Generators">Generator</a></li>
-						    </ul>
-						  </div>
-						</nav>
-					</div>
-
 					<div class="row">
 						<div id="generator" class="col-xs-12 col-md-7 col-lg-8">
 							<div class="panel panel-default">

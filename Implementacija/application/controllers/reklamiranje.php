@@ -23,19 +23,13 @@ class Reklamiranje extends CI_Controller{
 
         $this->upload->initialize($config);
 
-        if ( ! $this->upload->do_upload('userfile'))
+        if ( ! ($upload_data = $this->upload->do_upload('userfile')))
         {
             $error = "Slika nije uploadovana.";
             redirect(base_url() . '/Reklamiranje?error=' . $error);
         }
-        else
-        {
-            $upload_data = $this->upload->data(); 
-            $file_name = $upload_data['file_name'];
 
-            $info = "Uspesno ste uploadovali sliku oglasa.";
-            redirect(base_url() . '/Reklamiranje?info=' . $info);  
-        }
+        $file_name = $this->upload->file_name;
 		
 		$this->load->library('form_validation');
 		
@@ -54,15 +48,17 @@ class Reklamiranje extends CI_Controller{
 
 	   		//echo $this->session->userdata('logged_in');
 
-	   		$this->oglas->dodaj(array('SifKor' => 2, 'PutanjaDoSlike' => base_url() . "/slike/pictureIcon.png", 'PutanjaOdSlike' => $website, 'Cena' => $cena, 'DatumKraja' => $datumKraja, 'DatumPocetka' => date("Y-m-d")));
+	   		$this->oglas->dodaj(array('SifKor' => 2, 'PutanjaDoSlike' => "./uploads/oglasi/" . $file_name , 'PutanjaOdSlike' => $website, 'Cena' => $cena, 'DatumKraja' => $datumKraja, 'DatumPocetka' => date("Y-m-d")));
 
 	   	}
-	   	redirect('/Reklamiranje');
+	   	
+	   	$info = "Uspesno ste uploadovali sliku oglasa.";
+        redirect(base_url() . '/Reklamiranje?info=' . $info);  
 	}
 
-	function dohvatiSlikeOglasa($left=false) {
+	function dohvatiSlikeOglasa($left) {
 		$brojOglasa = $this->oglas->brojSlikaOglasa();
-		if ($left == true){
+		if ($left == 'true'){
 			$putanje = $this->oglas->dohvatiPutanje(0, $brojOglasa / 2);
 		} else {
 			$putanje = $this->oglas->dohvatiPutanje($brojOglasa / 2 + $brojOglasa % 2, $brojOglasa / 2);

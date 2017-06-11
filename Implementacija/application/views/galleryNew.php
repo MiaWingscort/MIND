@@ -74,12 +74,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									</td>
 								</tr>
 								<tr>
-									<td align="right" class="col-xs-6"><input type="button" value="Izaberi sliku" align="center" style="color:#e60000;"></input></td>
-									<td align="left" class="col-xs-6">
-										<form method="post" action="<?php echo base_url();?>Galerija/potvrdiUnos" >
-											<input type="submit" value="Dodaj sliku poklona" align="center" style="color:#e60000;"></input>
-										</form>
+									<?php echo form_open_multipart('Galerija/dodajSliku', array('name' => 'izaberiSliku'));?>
+										<td align="right" class="col-xs-6">
+											 <label for="files" class="btn" style="border: 1px solid #e60000; color: #e60000">Izaberi sliku</label>
+											 <input id="files" type="file" style="display:none;" name="userfile" size="4096" />
 										</td>
+										<td align="left" class="col-xs-6">
+											<label onclick="izaberiSliku.submit()"class="btn" style="border: 1px solid #e60000; color: #e60000">Dodaj sliku</label>
+										</td>
+									</form>
 								</tr>
 							</table>
 						</div>

@@ -13,6 +13,7 @@ class Administrator extends CI_Model
 
 	function dodaj($admin) {
 		$this->db->insert('administrator', $admin);
+		return $this->db->insert_id();
 	}
 
 	function nadjiSaSifrom($sifra) {
@@ -29,6 +30,14 @@ class Administrator extends CI_Model
 			return false;
 		}
 
+	}
+	function promeni($admin){
+		$this->db->set('Ime', $admin['Ime']);
+		$this->db->set('Prezime', $admin['Prezime']);  
+		$this->db->where('SifKor', $admin['SifKor']); 
+		$this->db->update('administrator');  
+
+		
 	}
 
 }
