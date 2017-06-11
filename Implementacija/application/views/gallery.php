@@ -104,7 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						{
 							echo "<tr>
 								<td colspan=\"2\" align=\"center\">
-									<form method=\"post\" action=\"<?php echo base_url();?>Galerija/dodaj\" >
+									<form method=\"post\" action=\""  . base_url() . "Galerija/dodaj\" >
 							<input type=\"submit\" style=\"color:#e60000;\" value=\"Dodaj sliku poklona\"></input>
 						</form>
 						</td>

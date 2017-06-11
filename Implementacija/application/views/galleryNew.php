@@ -2,9 +2,9 @@
 	defined('BASEPATH') OR exit('No direct script access allowed');
 	$sess = $this->session->userdata('logged_in');
 	$tip= $sess['tip_korisnika'];
-	if($tip!="A")
+	if($tip!="I")
 	{
-		if($tip=="I" || $tip=="P")
+		if($tip=="A" || $tip=="P")
 		{
 			redirect('Welcome/ulogovan');
 		}
