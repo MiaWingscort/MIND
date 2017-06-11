@@ -78,67 +78,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<td align="left" class="col-xs-6">
 											<label onclick="izaberiSliku.submit()"class="btn" style="border: 1px solid #e60000; color: #e60000">Dodaj sliku</label>
 										</td>
-									</form>
 								</tr>
 							</table>
-						</div>
-						<div class="col-xs-6 col-md-5 col-lg-4">
-							<div class="panel panel-default">
-								<div class="panel-body" align="center">
-									<span class="glyphicon glyphicon-user"></span>
-									<label>Petar Petrovic</label>
-								</div>
-								<div class="panel-footer">
-									<div class="row">
-										<table class="table">
-										    <tbody>
-								  				<tr>
-								  					<td class="data_left">Datum rodjenja:</td>
-								  					<td rowspan="4" align="center">
-								  						<img class="tablePicture" src="./slike/profilnaSlika.png">
-								  						<input type="button" value="Promeni sliku" align="center" style="margin-top: 5px"></input>
-								  					</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_right">&nbsp;&nbsp; 1.1.1995</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_left">Pol</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_right">&nbsp;&nbsp; Muski</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_left">Email:</td>
-								  					<td class="data_right">pera@gmail.com</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_left">Adresa:</td>
-								  					<td class="data_right">Gandijeva 15</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_left">Obrazovanje:</td>
-								  					<td class="data_right">/</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_left">Primalac poklona:</td>
-								  					<td class="data_right">Marija Petrovic</td>
-								  				</tr>
-								  				<tr>
-								  					<td colspan="2">
-								  						<label for="sel1">Interesovanja</label>
-														<select multiple class="form-control" id="sel1">
-															<option>Automobili</option>
-															<option>Knjige</option>
-															<option>Vina</option>
-														</select>
-													</td>
-								  				</tr>
-							  				</tbody>
-						  				</table>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
