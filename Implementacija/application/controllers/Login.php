@@ -14,8 +14,7 @@ class Login extends CI_Controller {
 	   	$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_checkCredentials');
 
 	   	if ($this->form_validation->run() == FALSE) {
-
-			echo "LOSI KREDENCIJALI";
+			redirect('Welcome');
 	   	} else {
 	   		redirect('Welcome/ulogovan');
 	   		#echo "USPESNO STE LOGOVANI";
