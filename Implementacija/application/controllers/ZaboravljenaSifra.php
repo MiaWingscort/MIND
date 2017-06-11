@@ -51,7 +51,6 @@ class ZaboravljenaSifra extends CI_Controller {
 	   			redirect(base_url() . '/zaboravljenaSifra?error=' . $error, 'refresh');
 	   		}
 	   	}
-
 	}
 
 	private function posaljiMail($korisnik) {

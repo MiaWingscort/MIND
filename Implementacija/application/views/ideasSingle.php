@@ -63,14 +63,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 	<div class="container-fluid">
 		<?php
+
+			$sess = $this->session->userdata('logged_in');
+			$tip= $sess['tip_korisnika'];
+
 			$nizUlaza = array();
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url(), "naziv"=>"Početna strana");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
 			$nizUlaza[] = array("active"=>TRUE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Kontakt", "naziv"=>"Kontakt");
-			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Generators", "naziv"=>"Generator");
-			$data['nizUlaza']=$nizUlaza;
-			$this->load->view('includes/header-logout.php',$data);
+			if($tip=="A")
+			{
+				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "UklanjanjeKorisnika", "naziv"=>"Ukloni korisnika");
+			}
+			if($tip=="P")
+			{
+				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "reklamiranje", "naziv"=>"Postavite reklamu");
+			}
+			if($tip=="I")
+			{
+
+				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Generators", "naziv"=>"Generator");
+				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "pretraga", "naziv"=>"Pretraga korisnika");
+			}
+			if($tip=="A" || $tip=="P" || $tip=="I")
+			{
+				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "PregledProfila", "naziv"=>"Moj profil");
+				$data['nizUlaza']=$nizUlaza;
+				$this->load->view('includes/header-logout.php',$data);
+			}
+			else
+			{
+				$data['nizUlaza']=$nizUlaza;
+				$this->load->view('includes/header-login.php',$data);
+			}
 		?>
 
 		<div class="row content">

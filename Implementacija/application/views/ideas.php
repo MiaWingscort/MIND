@@ -86,8 +86,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Generators", "naziv"=>"Generator");
 				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "pretraga", "naziv"=>"Pretraga korisnika");
 			}
-			$data['nizUlaza']=$nizUlaza;
-			$this->load->view('includes/header-logout.php',$data);
+			if($tip=="A" || $tip=="P" || $tip=="I")
+			{
+				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "PregledProfila", "naziv"=>"Moj profil");
+				$data['nizUlaza']=$nizUlaza;
+				$this->load->view('includes/header-logout.php',$data);
+			}
+			else
+			{
+				$data['nizUlaza']=$nizUlaza;
+				$this->load->view('includes/header-login.php',$data);
+			}
 		?>
 		<div class="row content">
 			<?php 
