@@ -62,7 +62,6 @@
 
 	function izaberiNovog(button) {
 		var parentButton = $(button).parent(); 
-
 		var id = $($($(parentButton).parent()).first()).text();
 
 		$.ajax({url: "http://localhost:8080/ci/Pretraga/izaberi/" + id , dataType: 'json', success: function(result){
