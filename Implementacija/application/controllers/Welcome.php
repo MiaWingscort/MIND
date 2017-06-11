@@ -22,4 +22,8 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
+	public function ulogovan()
+	{
+		$this->load->view('welcome_message_logged_in');
+	}
 }

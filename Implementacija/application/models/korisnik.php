@@ -11,7 +11,7 @@ class Korisnik extends CI_Model
 	}
 
 	function prijavi($email, $lozinka) {
-		$this->db->select('SifKor, E-mail ,Lozinka');
+		$this->db->select('SifKor, E-mail, Lozinka, TipKorisnika');
 		$this->db->from('korisnik');
 		$this->db->where('E-mail', $email);
 		$this->db->where('Lozinka', $lozinka);
@@ -20,7 +20,7 @@ class Korisnik extends CI_Model
 		$query = $this->db->get();
 
 		if ($query->num_rows() == 1) {
-			return $query->result();
+			return $query->row();
 		} else {
 			return false;
 		}
@@ -53,6 +53,40 @@ class Korisnik extends CI_Model
 	function promeniLozinku($korisnik) {
 		$this->db->where('SifKor', $korisnik->SifKor);
 		$this->db->update('korisnik', array('Lozinka' => MD5($korisnik->Lozinka)));
+	}
+	
+	function ukloniKorisnika($email){
+		$this->db->where('E-mail',$email);
+		$this->db->update('korisnik', array('Zabranjen' => 'D'));
+
+	}
+
+	function dohvatiSveKorisnike() {
+		$this->db->select('*');
+		$this->db->from('korisnik');
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+	function promeniEmailSlika($korisnik){
+		$this->db->set('E-mail', $korisnik['Email']); 
+		$this->db->where('SifKor', $korisnik['SifKor']); 
+		$this->db->update('Korisnik');  
+	}
+	function nadjiSaEmailomKorisnik($email){
+		$this->db->select('SifKor, E-mail, Lozinka, TipKorisnika, PutanjaDoProfilSlike');
+		$this->db->from('korisnik');
+		$this->db->where('E-mail', $email);
+		$this->db->limit(1);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() == 1) {
+			return $query->row();
+		} else {
+			return false;
+		}
 	}
 }
 

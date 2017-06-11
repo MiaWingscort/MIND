@@ -6,8 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
 	<title>Tajanstveni Deda Mraz</title>
 
-	<link href="css/bootstrap.css" rel="stylesheet">
-	<link href="css/mindCSS.css" rel="stylesheet">
+	<link href=<?php echo base_url() . "css/bootstrap.css"?> rel="stylesheet">
+	<link href=<?php echo base_url() . "css/mindCSS.css"?>  rel="stylesheet">
 	<meta charset="UTF-8">
 
   	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,13 +49,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->load->view('includes/header-login.php');
 		?>
 		<div class="row content">
-			<div class="col-xs-0 col-sm-0 col-md-2">
-				<div id="leftBanner" class="row banner">
-					<img src="./slike/nonstopshop.png">
-					<img src="./slike/idealan.png">
-					<img src="./slike/ludPoklon.png">
-				</div>
-			</div>
+			<?php 
+				$this->load->view('includes/left-banner.php'); 
+			?>
 
 			<div class="col-xs-12 col-sm-12 col-md-8">
 				<div class="padding-10" class="col-xs-12">	
@@ -95,13 +91,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<img src="./slike/poklonshop.png">
 				</div>
 			</div>
-			<div class="col-xs-0 col-sm-0 col-md-2">
-				<div id="rightBanner" class="row banner">
-					<img src="./slike/nonstopshop.png">
-					<img src="./slike/idealan.png">
-					<img src="./slike/ludPoklon.png">
-				</div>
-			</div>
+			<?php 
+				$this->load->view('includes/right-banner.php'); 
+			?>
 		</div>
 	</div>
 </body>
