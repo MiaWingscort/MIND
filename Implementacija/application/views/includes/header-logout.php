@@ -21,7 +21,7 @@
 					      </a>
 					   </div>
 					   <div>
-					   		<form name="logoutForm" action="/ci/login/logout"></form>
+					   		<form name="logoutForm" action="/ci/Login/logout"></form>
 					   </div>
 					   <div class="collapse navbar-collapse" id="myNavbar">
 					      <ul class="nav navbar-nav navbar-right">

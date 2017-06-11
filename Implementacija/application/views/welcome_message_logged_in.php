@@ -107,15 +107,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body onload="initializer()">
 	<div class="container-fluid">
 		<?php
+			$tip= $sess['tip_korisnika'];
+
+
 			$nizUlaza = array();
 			$nizUlaza[] = array("active"=>TRUE, "adresa"=> "#", "naziv"=>"Početna strana");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Kontakt", "naziv"=>"Kontakt");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Generators", "naziv"=>"Generator");
-			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "UklanjanjeKorisnika", "naziv"=>"Ukloni korisnika");
-			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "reklamiranje", "naziv"=>"Postavite reklamu");
+			if($tip=="A")
+			{
+				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "UklanjanjeKorisnika", "naziv"=>"Ukloni korisnika");
+			}
+			if($tip=="P")
+			{
+				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "reklamiranje", "naziv"=>"Postavite reklamu");
+			}
+			if($tip=="I")
+			{
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "pretraga", "naziv"=>"Pretraga korisnika");
+			}
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "PregledProfila", "naziv"=>"Moj profil");
 			$data['nizUlaza']=$nizUlaza;
 			$this->load->view('includes/header-logout.php',$data);
