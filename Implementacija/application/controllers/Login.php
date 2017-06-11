@@ -17,7 +17,6 @@ class Login extends CI_Controller {
 			redirect('Welcome');
 	   	} else {
 	   		redirect('Welcome/ulogovan');
-	   		#echo "USPESNO STE LOGOVANI";
 	   	}
 
 	}
@@ -33,19 +32,15 @@ class Login extends CI_Controller {
 
 		if ($result) {
 			$sess_array = array();
-
-			
 		
-				$sess_array = array(
-					'id' => $result->SifKor, 
-					'email' => $result->{'E-mail'},
-					'tip_korisnika' => $result->{'TipKorisnika'}
-				);
+			$sess_array = array(
+				'id' => $result->SifKor, 
+				'email' => $result->{'E-mail'},
+				'tip_korisnika' => $result->{'TipKorisnika'}
+			);
 
-				$this->session->set_userdata('logged_in', $sess_array);
-				
-			
-			
+			$this->session->set_userdata('logged_in', $sess_array);
+
 			return TRUE;
 		} else {
 			$this->form_validation->set_message('check_database', 'Neispravan email ili sifra. Pokusajte ponovo');

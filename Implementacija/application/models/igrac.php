@@ -19,10 +19,7 @@ class Igrac extends CI_Model
 
 		$stringPretrage = '(\'' . $stringPretrage . '\')';
 
-		//$id = $this->session->userdata('logged_in')['id'];
-		// DODATI DA SE RAZLIKUJE OD ID ULOGOVANOG IGRACA !!!!!!!!!!!!!!!!!!
-		// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		$sqlQuery = "SELECT Igr.Ime, Igr.Prezime, Igr.Adresa, Igr.DatumRodjenja, Igr.Pol
+		$sqlQuery = "SELECT Igr.SifKor, Igr.Ime, Igr.Prezime, Igr.Adresa, Igr.DatumRodjenja, Igr.Pol
 					 FROM Igrac AS Igr, Ima AS I
 					 WHERE Igr.SifKor NOT IN (SELECT Primalac
 											  FROM Kupovina 
