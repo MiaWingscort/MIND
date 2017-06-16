@@ -12,6 +12,7 @@
 	   		$this->load->model('ima', '', TRUE);
 	   		$this->load->model('prodavac', '', TRUE);
 	   		$this->load->model('administrator', '', TRUE);
+	  		$this->load->model('GalerijaM', '', TRUE);
 
 		}
 
@@ -80,8 +81,8 @@
 	   			$slikaPutanja = $slika->PutanjaDoProfilSlike;
 
 	   			$rezAdmin = $this->administrator->nadjiSaSifrom($sifra);
-
-	   			$data = array('Ime' => $rezAdmin->Ime, 'Prezime' => $rezAdmin->Prezime, 'Email' => $email, 'Slika' => $slikaPutanja);
+	   			$resultset = $this->GalerijaM->vratiSve();
+	   			$data = array('Ime' => $rezAdmin->Ime, 'Prezime' => $rezAdmin->Prezime, 'Email' => $email, 'Slika' => $slikaPutanja, 'resultset'=> $resultset);
 
 	   			$this->load->view('profil_administratora', $data);
 	   		}

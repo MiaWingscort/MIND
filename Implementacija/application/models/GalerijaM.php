@@ -45,6 +45,12 @@ class GalerijaM extends CI_Model
 	function obrisi($idSlike) {
 		$this->db->delete('slika_u_galeriji', array('SifSlika' => $idSlike)); 
 	}
+
+	function izmeniOdobrenu($SifSlika) {
+		$this->db->set('Odobrena', 1);  
+		$this->db->where('SifSlika', $SifSlika); 
+		$this->db->update('slika_u_galeriji');  
+	}
 }
 
 ?>

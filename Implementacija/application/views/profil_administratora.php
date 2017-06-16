@@ -36,8 +36,21 @@ if($tip!="A")
 
 <script type="text/javascript">
 	function odobri(id) {
-		$.ajax({url: "http://localhost:8080/ci/Galerija/odobri/" + id , dataType: 'json', success: function(result){
-	        alert("USPESNO STE ODOBRILI SLIKU");
+		$.ajax({url: "http://localhost:8080/ci/Galerija/odobri/" + id , success: function(result){
+	        window.location.reload();
+		}});
+	}
+	function obrisi(id) {
+		$.ajax({url: "http://localhost:8080/ci/Galerija/obrisiBez/" + id , success: function(result){
+	        window.location.reload();
+		}});
+	}
+	function blokiraj(id) {
+		console.log(id);
+		$.ajax({url: "http://localhost:8080/ci/Galerija/blokiraj/" + id , success: function(result){
+	        window.location.reload();
+		}, error: function(result){
+			console.log(result);
 		}});
 	}
 </script>
@@ -140,13 +153,13 @@ if($tip!="A")
 												{
 													echo "<div class=\"col-lg-4 col-md-6 col-xs-12 thumb\">
 											<a class=\"thumbnail\" href=\"#\">
-									                    <img class=\"img-responsive\" style=\"width: auto;height:200px;\" src=\"". base_url() .$result['PutanjaDoSlike'] ."\" alt=\"\">
+									                    <img class=\"img-responsive\" style=\"width: auto;height:200px;\" src=\"" .$result['PutanjaDoSlike'] ."\" alt=\"\">
 									                    
 									                </a>
 
-									                     <label for=\"files\" class=\"btn\" style=\"border: 1px solid #e60000;\" id=\"".$result['SifSlika']."\" onclick=\"odobri(this.id)\" color: #e60000\">Odobri</label>
-									                      <label for=\"files\" class=\"btn\" id=" . $result['SifSlika']."\" style=\"border: 1px solid #e60000; color: #e60000\">Obrisi</label>
-									                       <label for=\"files\" class=\"btn\" style=\"border: 1px solid #e60000; color: #e60000\">Blokiraj</label>
+									                	<label for=\"files\" class=\"btn\" style=\"border: 1px solid #e60000;\" id=\"".$result['SifSlika']."\" onclick=\"odobri(this.id)\" color: #e60000\">Odobri</label>
+									                    <label for=\"files\" class=\"btn\" id=" . $result['SifSlika']."\" onclick=\"obrisi(this.id)\" style=\"border: 1px solid #e60000; color: #e60000\">Obrisi</label>
+									                    <label for=\"files\" class=\"btn\" id=\"" . $result['SifSlika']."\" onclick=\"blokiraj(this.id)\" style=\"border: 1px solid #e60000; color: #e60000\">Blokiraj</label>
 									                </div>";
 									            }
 									            }

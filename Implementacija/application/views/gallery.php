@@ -86,14 +86,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="col-xs-12 col-sm-12 col-md-8">
 				<div id="main" class="col-xs-12">	
 					<div class="row">
-						<div id="galerija" class="col-xs-6 col-md-7 col-lg-8">
+						<div id="galerija" class="col-xs-12">
 							
 							<?php 
 							foreach ($resultset as $result) {
 								if($result['Odobrena']>0)
 								{
 									echo "<div class=\"col-lg-4 col-md-6 col-xs-12 thumb\"><a class=\"thumbnail\" href=\"#\">
-					                    <img class=\"img-responsive\" src=\"". base_url() .$result['PutanjaDoSlike'] ."\" alt=\"\">
+					                    <img class=\"img-responsive\" style=\"width: auto;height:200px;\" src=\"" . $result['PutanjaDoSlike'] ."\" alt=\"\">
 					                </a>
 					                </div>";
 					            }
