@@ -6,6 +6,7 @@ class Galerija extends CI_Controller {
 	function __construct() {
 	   parent::__construct();
 	   $this->load->model('GalerijaM', '', TRUE);
+	   $this->load->model('korisnik', '', TRUE);
 	}
 	public function index()
 	{
@@ -14,10 +15,11 @@ class Galerija extends CI_Controller {
 		$this->load->view('gallery',$data);
 	}
 	public function odobri($idSlike){
-		$resultset = $this->GalerijaM->nadjiSaSifrom($idSlike);
-		$resultset['Odobrena']=1;
+		$this->GalerijaM->izmeniOdobrenu($idSlike);
+	}
+
+	public function obrisiBez($idSlike){
 		$this->GalerijaM->obrisi($idSlike);
-		$this->GalerijaM->dodaj($resultset);
 	}
 	public function obrisi($idSlike){
 		$this->GalerijaM->obrisi($idSlike);
@@ -34,6 +36,12 @@ class Galerija extends CI_Controller {
 	{
 		$this->load->view('galleryNew');
 	}
+	public function blokiraj($idSlike){
+		$slika = $this->GalerijaM->nadjiSaSifrom($idSlike);
+		$this->korisnik->blokiraj($slika->SifKor);
+		$this->GalerijaM->obrisi($idSlike);
+	}
+
 	function dodajSliku(){
 		$config['upload_path']          = './uploads/galerija/';
         $config['allowed_types']        = 'gif|jpg|png';
@@ -59,7 +67,7 @@ class Galerija extends CI_Controller {
             $info = "Uspesno ste uploadovali sliku u galeriju.";
         }
 			$slika['SifKor']=$this->session->userdata('logged_in')['id']; 						#sredi da ne bude hardcode
-			$slika['PutanjaDoSlike']="./uploads/galerija/" . $file_name;
+			$slika['PutanjaDoSlike']="http://localhost:8080/ci/uploads/galerija/" . $file_name;
 			$this->GalerijaM->dodaj($slika);
 			
             redirect(base_url() . 'Galerija?info=' . $info);  

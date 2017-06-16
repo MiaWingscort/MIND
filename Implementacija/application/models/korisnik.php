@@ -107,6 +107,12 @@ class Korisnik extends CI_Model
 		$this->db->where('SifKor', $korisnik['SifKor']);
 		$this->db->update('korisnik', array('Lozinka' => $korisnik['Lozinka'], 'PonistavaoSifru' => 'N'));
 	}
+	
+	function blokiraj($idKorisnika){
+		$this->db->set('Zabranjen', 'D'); 
+		$this->db->where('SifKor', $idKorisnika); 
+		$this->db->update('Korisnik'); 
+	}
 }
 
 ?>
