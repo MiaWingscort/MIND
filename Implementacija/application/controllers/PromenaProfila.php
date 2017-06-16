@@ -59,7 +59,8 @@ class PromenaProfila extends CI_Controller {
 				'id' => $sifra, 
 				'email' => $email,
 				'tip_korisnika' => $tip,
-				'primalacId' => $primalacId
+				'primalacId' => $primalacId,
+				'menjao_sifru' => 'N'
 				);
 
 			$this->session->set_userdata('logged_in', $sess_array);
@@ -200,7 +201,8 @@ class PromenaProfila extends CI_Controller {
 			$sess_array = array(
 				'id' => $sifra, 
 				'email' => $email,
-				'tip_korisnika' => $tip
+				'tip_korisnika' => $tip,
+				'menjao_sifru' => 'N'
 				);
 
 			$this->session->set_userdata('logged_in', $sess_array);
@@ -288,7 +290,8 @@ class PromenaProfila extends CI_Controller {
 			$sess_array = array(
 				'id' => $sifra, 
 				'email' => $email,
-				'tip_korisnika' => $tip
+				'tip_korisnika' => $tip,
+				'menjao_sifru' => 'N'
 				);
 
 			$this->session->set_userdata('logged_in', $sess_array);
@@ -393,7 +396,8 @@ class PromenaProfila extends CI_Controller {
 			$sess_array = array(
 				'id' => $sifra, 
 				'email' => $email,
-				'tip_korisnika' => $tip
+				'tip_korisnika' => $tip,
+				'menjao_sifru' => 'N'
 				);
 
 			$this->session->set_userdata('logged_in', $sess_array);

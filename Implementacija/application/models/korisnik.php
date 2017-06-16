@@ -11,7 +11,7 @@ class Korisnik extends CI_Model
 	}
 
 	function prijavi($email, $lozinka) {
-		$this->db->select('SifKor, E-mail, Lozinka, TipKorisnika');
+		$this->db->select('SifKor, E-mail, Lozinka, TipKorisnika, Zabranjen, PonistavaoSifru');
 		$this->db->from('korisnik');
 		$this->db->where('E-mail', $email);
 		$this->db->where('Lozinka', $lozinka);
@@ -51,8 +51,8 @@ class Korisnik extends CI_Model
 	}
 
 	function promeniLozinku($korisnik) {
-		$this->db->where('SifKor', $korisnik->SifKor);
-		$this->db->update('korisnik', array('Lozinka' => MD5($korisnik->Lozinka)));
+		$this->db->where('SifKor', $korisnik['SifKor']);
+		$this->db->update('korisnik', array('Lozinka' => $korisnik['Lozinka'], 'PonistavaoSifru' => 'D'));
 	}
 	
 	function ukloniKorisnika($email){
@@ -95,6 +95,17 @@ class Korisnik extends CI_Model
 		} else {
 			return false;
 		}
+	}
+
+	function sacuvajIstuSifru($korisnik) {
+		$this->db->set('PonistavaoSifru', 'N'); 
+		$this->db->where('SifKor', $korisnik['SifKor']); 
+		$this->db->update('Korisnik'); 
+	}
+
+	function promeniNovuSifru($korisnik) {
+		$this->db->where('SifKor', $korisnik['SifKor']);
+		$this->db->update('korisnik', array('Lozinka' => $korisnik['Lozinka'], 'PonistavaoSifru' => 'N'));
 	}
 }
 
