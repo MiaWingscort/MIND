@@ -4,7 +4,7 @@ USE `tajanstveni_deda_mraz`;
 --
 -- Host: localhost    Database: tajanstveni_deda_mraz
 -- ------------------------------------------------------
--- Server version	5.7.14
+-- Server version	5.7.17-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -98,7 +98,7 @@ CREATE TABLE `igrac` (
 
 LOCK TABLES `igrac` WRITE;
 /*!40000 ALTER TABLE `igrac` DISABLE KEYS */;
-INSERT INTO `igrac` VALUES (1,'Danijela','Mijailović','Marka Čelebonovića 55','0651234567','2015-02-03','Z'),(4,'Nikola','Jevremović','Blok 21','0631234567','1995-11-01','Z'),(5,'Suzana','Mijailović','Blok 22','0641234567','2000-01-01','Z'),(6,'Pera','Perić','Blok 23','0650987654','1990-02-02',NULL);
+INSERT INTO `igrac` VALUES (1,'Danijela','Mijailović','Marka Čelebonovića 55','0651234567','2015-02-03','Z'),(4,'Nikola','Jevremović','Blok 21','0631234567','1995-11-01','M'),(5,'Perica','Perić','Blok 22','0641234567','1990-10-10','M'),(6,'Suzana','Mijailović','Blok 23','0611234567','1989-07-27','Z');
 /*!40000 ALTER TABLE `igrac` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -158,7 +158,7 @@ CREATE TABLE `ima` (
   KEY `FK_SifKor_Ima_idx` (`SifKor`),
   CONSTRAINT `FK_SifInt_Ima` FOREIGN KEY (`SifInt`) REFERENCES `interesovanje` (`SifInt`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_SifKor_Ima` FOREIGN KEY (`SifKor`) REFERENCES `korisnik` (`SifKor`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tablela koja predstavljam povezanost Igraca sa svojim Interesovanjima';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Tablela koja predstavlja povezanost Igraca sa svojim Interesovanjima';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,7 +223,7 @@ CREATE TABLE `korisnik` (
 
 LOCK TABLES `korisnik` WRITE;
 /*!40000 ALTER TABLE `korisnik` DISABLE KEYS */;
-INSERT INTO `korisnik` VALUES (1,'danijelamijailovic5@gmail.com','daca123','N','I','slike/1_profilna.png','N'),(2,'igluma95@gmail.com','igor123','N','P','uploads/profilne/gigi.jpg','N'),(3,'granicmina95@gmail.com','mina123','N','A','uploads/profilne/mina.jpg','N'),(4,'nikolajevremovic95@gmail.com','jele123','N','I','uploads/profilne/jele.jpg','N'),(5,'pera@etf.rs','pera123','N','I','/slike/profilnaSlika.png','N'),(6,'suzanam@gmail.com','suzana123','N','I','/slike/profilnaSlika.png','N');
+INSERT INTO `korisnik` VALUES (1,'danijelamijailovic5@gmail.com','daca123','N','I','http://localhost:8080/ci/slike/1_profilna.png','N'),(2,'igluma95@gmail.com','igor123','N','P','http://localhost:8080/ci/uploads/profilne/gigi.jpg','N'),(3,'granicmina95@gmail.com','mina123','N','A','http://localhost:8080/ci/uploads/profilne/mina.jpg','N'),(4,'nikolajevremovic95@gmail.com','jele123','N','I','http://localhost:8080/ci/uploads/profilne/jele.jpg','N'),(5,'pera@etf.rs','pera123','N','I','http://localhost:8080/ci/slike/profilnaSlika.png','N'),(6,'suzanam@gmail.com','suzana123','N','I','http://localhost:8080/ci/slike/profilnaSlika.png','N');
 /*!40000 ALTER TABLE `korisnik` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -271,7 +271,6 @@ CREATE TABLE `kupovina` (
   `Primalac` int(10) unsigned DEFAULT NULL,
   `Status_` varchar(20) DEFAULT 'NIJE_OBAVLJENA',
   PRIMARY KEY (`SifKup`),
-  UNIQUE KEY `Kupac_Primalac_Status_Unique` (`Kupac`,`Primalac`,`Status_`),
   KEY `FK_SifKor_Kupac_idx` (`Kupac`),
   KEY `FK_SifKor_Primalac_idx` (`Primalac`),
   CONSTRAINT `FK_SifKor_Kupac` FOREIGN KEY (`Kupac`) REFERENCES `igrac` (`SifKor`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -285,7 +284,7 @@ CREATE TABLE `kupovina` (
 
 LOCK TABLES `kupovina` WRITE;
 /*!40000 ALTER TABLE `kupovina` DISABLE KEYS */;
-INSERT INTO `kupovina` VALUES (1,1,4,'OTKAZANA'),(2,4,1,'OBAVLJENA'),(3,4,5,'NIJE_OBAVLJENA');
+INSERT INTO `kupovina` VALUES (1,1,4,'OTKAZANA'),(2,4,1,'OBAVLJENA');
 /*!40000 ALTER TABLE `kupovina` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -403,10 +402,11 @@ CREATE TABLE `slika_u_galeriji` (
   `SifSlika` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `SifKor` int(10) unsigned DEFAULT NULL,
   `PutanjaDoSlike` varchar(100) NOT NULL,
+  `Odobreno` int(11) DEFAULT '0',
   PRIMARY KEY (`SifSlika`),
   KEY `FK_SifKor_SlikaUGaleriji_idx` (`SifKor`),
   CONSTRAINT `FK_SifKor_SlikaUGaleriji` FOREIGN KEY (`SifKor`) REFERENCES `igrac` (`SifKor`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Predstavlja slike poslatih ili primljenih poklona (u galeriji) koje postavlja Igrac';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='Predstavlja slike poslatih ili primljenih poklona (u galeriji) koje postavlja Igrac';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -415,7 +415,7 @@ CREATE TABLE `slika_u_galeriji` (
 
 LOCK TABLES `slika_u_galeriji` WRITE;
 /*!40000 ALTER TABLE `slika_u_galeriji` DISABLE KEYS */;
-INSERT INTO `slika_u_galeriji` VALUES (1,1,'/slika1.jpg'),(2,4,'/slika2.jpg');
+INSERT INTO `slika_u_galeriji` VALUES (1,1,'http://localhost:8080/ci/uploads/galerija/koverte.jpg',0),(2,4,'http://localhost:8080/ci/uploads/galerija/solja.jpg',0),(3,1,'http://localhost:8080/ci/uploads/galerija/teddy.jpg',0);
 /*!40000 ALTER TABLE `slika_u_galeriji` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -436,4 +436,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-11 23:24:32
+-- Dump completed on 2017-06-16 17:37:01
