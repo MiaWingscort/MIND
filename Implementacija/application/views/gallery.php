@@ -49,7 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url(), "naziv"=>"Početna strana");
 			$nizUlaza[] = array("active"=>TRUE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
+			if($tip!="A")
+			{
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Kontakt", "naziv"=>"Kontakt");
+			}
 			if($tip=="A")
 			{
 				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "UklanjanjeKorisnika", "naziv"=>"Ukloni korisnika");
@@ -87,10 +90,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							
 							<?php 
 							foreach ($resultset as $result) {
-								echo "<div class=\"col-lg-4 col-md-6 col-xs-12 thumb\"><a class=\"thumbnail\" href=\"#\">
-				                    <img class=\"img-responsive\" src=\"". base_url() .$result['PutanjaDoSlike'] ."\" alt=\"\">
-				                </a>
-				                </div>";
+								if($result['Odobrena']>0)
+								{
+									echo "<div class=\"col-lg-4 col-md-6 col-xs-12 thumb\"><a class=\"thumbnail\" href=\"#\">
+					                    <img class=\"img-responsive\" src=\"". base_url() .$result['PutanjaDoSlike'] ."\" alt=\"\">
+					                </a>
+					                </div>";
+					            }
 							}
 				               
 				            ?>

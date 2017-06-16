@@ -1,5 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+$sess = $this->session->userdata('logged_in');
+$tip= $sess['tip_korisnika'];
+if($tip=="A")
+{
+	redirect('Welcome/ulogovan');
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,7 +31,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </style>
 
 <script type="text/javascript">
-
+	function zatvoriGreske(ime) {
+		$('#' + ime).slideToggle(400);
+	}
 </script>
 
 </head>
@@ -75,10 +83,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="col-xs-12 col-sm-12 col-md-8">
 				<div id="main" class="col-xs-12">	
 					<div class="row">
+					
 						<div class="col-xs-1 col-md-3"></div>
 						<div id="kontakt" class="col-xs-10 col-md-6">
 							<div class="panel panel-default">
 							  <div class="panel-body">
+							  <?php if ($this->session->flashdata('greske-kontakt')): ?>
+								<div id="greske-kontakt" class="alert alert-danger collapse in">
+									<strong>GRESKA!</strong>
+									<?php
+										echo $this->session->flashdata('greske-kontakt');
+									?>
+										<div align="center" style="margin-top: 5px;">
+										<button type="button" class="btn btn-warning" onclick="zatvoriGreske('greske-kontakt')">Pokusajte ponovo</button>
+								</div>
+							</div>
+						<?php endif ?>
 							    	<h5>KONTAKTIRAJTE NAS</h5>
 							  	</div>
 							  	<div class="panel-footer">
