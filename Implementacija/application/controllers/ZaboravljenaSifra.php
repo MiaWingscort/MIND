@@ -60,7 +60,7 @@ class ZaboravljenaSifra extends CI_Controller {
 
 		$nova_lozinka = random_string('alnum', 16);
 
-		$this->korisnik->promeniLozinku($korisnik);
+		$this->korisnik->promeniLozinku(array('SifKor' => $korisnik->SifKor, 'Lozinka' => $nova_lozinka));
 
 		$config = Array(
 			'protocol'  => 'smtp',
@@ -84,4 +84,25 @@ class ZaboravljenaSifra extends CI_Controller {
 		return $this->email->send();
 	}
 
+	function sacuvajIstuSifru() {
+		$sess = $this->session->userdata('logged_in');
+		$SifKor= $sess['id'];
+
+		$this->korisnik->sacuvajIstuSifru(array('SifKor' => $SifKor));
+
+		$sess['menjao_sifru'] = 'N';
+
+		$this->session->set_userdata('logged_in', $sess);
+	}
+
+	function promeniSifru($novaSifra) {
+		$sess = $this->session->userdata('logged_in');
+		$SifKor= $sess['id'];
+
+		$this->korisnik->promeniNovuSifru(array('Lozinka' => $novaSifra, 'SifKor' => $SifKor));
+
+		$sess['menjao_sifru'] = 'N';
+
+		$this->session->set_userdata('logged_in', $sess);
+	}
 }

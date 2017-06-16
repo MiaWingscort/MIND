@@ -51,6 +51,18 @@ if($tip!="P")
 	function zatvoriGreske(ime) {
 		$('#' + ime).slideToggle(400);
 	}
+
+	function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#slikaOglasa').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>
 
 </head>
@@ -64,8 +76,8 @@ if($tip!="P")
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url(), "naziv"=>"Početna strana");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
-			$nizUlaza[] = array("active"=>TRUE, "adresa"=> base_url() . "contact.php", "naziv"=>"Kontakt");
-			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "reklamiranje", "naziv"=>"Postavite reklamu");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Kontakt", "naziv"=>"Kontakt");
+			$nizUlaza[] = array("active"=>TRUE, "adresa"=> base_url() . "reklamiranje", "naziv"=>"Postavite reklamu");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "PregledProfila", "naziv"=>"Moj profil");
 			$data['nizUlaza']=$nizUlaza;
 			$this->load->view('includes/header-logout.php',$data);
@@ -80,7 +92,7 @@ if($tip!="P")
 				<div id="main" class="col-xs-12">	
 					
 					<div class="row  padding-5">
-						<div id="oglasi" class="col-xs-6 col-md-7 col-lg-8 ">
+						<div id="oglasi" class="col-xs-12">
 							<div class="panel panel-default">
 							  <div class="panel-body" align="center">
 							   <span class="glyphicon glyphicon-user"></span>
@@ -92,12 +104,12 @@ if($tip!="P")
 								  		<div class="col-xs-12 col-sm-4" align="center">
 									  		<div class="form-group">
 									  			<label>Slika oglasa</label>
-										  		<img src=<?php echo base_url() . "/slike/pictureIcon.png" ?> style="width:150px; height: 150px">
+										  		<img id="slikaOglasa" src=<?php echo base_url() . "/slike/pictureIcon.png" ?> style="width:250px; height: 250px">
 										  		<br>
 										  		<br>
 										  			<h4>Max. velicina 4MB</h4>
 												<br>
-										  			<input type="file" name="userfile" size="4096" />
+										  			<input type="file" name="userfile" size="4096" onchange="readURL(this);" />
 										  		<?php 
 											 		$this->load->view('includes/error.php'); 
 											 	?>
@@ -136,60 +148,6 @@ if($tip!="P")
 								  	</form>
 								</div>
 							  </div>
-							</div>
-						</div>
-						<div class="col-xs-6 col-md-5 col-lg-4">
-							<div class="panel panel-default">
-								<div class="panel-body" align="center">
-									<span class="glyphicon glyphicon-user"></span>
-									<label>DexyCo</label>
-								</div>
-								<div class="panel-footer">
-									<div class="row">
-										<table class="table">
-										    <tbody>
-								  				<tr>
-								  					<td class="data_left">PIB:</td>
-								  					<td rowspan="4" align="center">
-								  						<img id="profilePicture" src="./slike/profilnaSlika.png">
-								  						<input type="button" value="Promeni sliku" align="center" style="margin-top: 5px"></input>
-								  					</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_right">&nbsp;&nbsp; 5125415</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_left">Pol</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_right">&nbsp;&nbsp; Muski</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_left">Email:</td>
-								  					<td class="data_right">info@dexyco.rs</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_left">Adresa:</td>
-								  					<td class="data_right">Bulevar Arsenija Carnojevica 15</td>
-								  				</tr>
-								  				<tr>
-								  					<td class="data_left">Kontakt telefon:</td>
-								  					<td class="data_right">+381 11 333 5244</td>
-								  				</tr>
-								  				<tr>
-								  					<td colspan="2">
-								  						<label for="sel1">Interesovanja</label>
-														<select multiple class="form-control" id="sel1">
-															<option>Automobili</option>
-															<option>Knjige</option>
-															<option>Vina</option>
-														</select>
-								  					</td>
-								  				</tr>
-							  				</tbody>
-						  				</table>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>

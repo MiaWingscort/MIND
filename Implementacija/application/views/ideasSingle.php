@@ -145,9 +145,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 													<tr>
 														<td colspan=\"3\" class=\"col-xs-6\">
 														<div>
-														<img src=" . base_url()
-														.$PutanjaDoSlike .
-														">
+														<img src=" .$PutanjaDoSlike . ">
 														<p align=\"justify\">" . $Tekst . "</p>
 											</div>
 									</td>

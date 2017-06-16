@@ -73,7 +73,7 @@ class Reklamiranje extends CI_Controller{
 
 	   		$SifraKorisnika = $session_data_array['id'];
 
-	   		$this->oglas->dodaj(array('SifKor' => $SifraKorisnika, 'PutanjaDoSlike' => "localhost:8080/ci/uploads/oglasi/" . $file_name , 'PutanjaOdSlike' => $website, 'Cena' => $cena, 'DatumKraja' => $datumKraja, 'DatumPocetka' => date("Y-m-d")));
+	   		$this->oglas->dodaj(array('SifKor' => $SifraKorisnika, 'PutanjaDoSlike' => "http://localhost:8080/ci/uploads/oglasi/" . $file_name , 'PutanjaOdSlike' => $website, 'Cena' => $cena, 'DatumKraja' => date('Y-m-d', strtotime($datumKraja)), 'DatumPocetka' => date("Y-m-d")));
 
 	   	}
 	   	
@@ -84,9 +84,9 @@ class Reklamiranje extends CI_Controller{
 	function dohvatiSlikeOglasa($left) {
 		$brojOglasa = $this->oglas->brojSlikaOglasa();
 		if ($left == 'true'){
-			$putanje = $this->oglas->dohvatiPutanje(0, $brojOglasa / 2);
+			$putanje = $this->oglas->dohvatiPutanje(0, floor($brojOglasa / 2));
 		} else {
-			$putanje = $this->oglas->dohvatiPutanje($brojOglasa / 2 + $brojOglasa % 2, $brojOglasa / 2);
+			$putanje = $this->oglas->dohvatiPutanje(floor($brojOglasa / 2) + $brojOglasa % 2, floor($brojOglasa / 2));
 		}
 		
 		echo json_encode($putanje);

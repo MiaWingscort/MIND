@@ -27,12 +27,12 @@
 
 		setInterval(function() {
 			$('#rightBanner img').attr('src', listRight[counterRight]['PutanjaDoSlike']);
-			$('#rightBanner img').attr('href', listRight[counterRight]['PutanjaOdSlike']);
+			$('#rightBanner a').attr('href', listRight[counterRight]['PutanjaOdSlike']);
 
 			counterRight = (counterRight + 1) % listRight.length;
 
 			$('#leftBanner img').attr('src', listLeft[counterLeft]['PutanjaDoSlike']);
-			$('#leftBanner img').attr('href', listLeft[counterLeft]['PutanjaOdSlike']);
+			$('#leftBanner a').attr('href', listLeft[counterLeft]['PutanjaOdSlike']);
 
 			counterLeft = (counterLeft + 1) % listLeft.length;
 		}, 3000)
@@ -40,7 +40,7 @@
 
 	<div class="col-xs-0 col-sm-0 col-md-2">
 		<div id="leftBanner" class="row banner">
-			<img src="" href="">
+			<a href="" target="_blank"><img src=""></a>
 		</div>
 	</div>
 </html>

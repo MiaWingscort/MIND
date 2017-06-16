@@ -61,7 +61,8 @@ class Registracija extends CI_Controller {
 				$sess_array = array(
 					'id' => $id, 
 					'email' => $email,
-					'tip_korisnika' => 'I'
+					'tip_korisnika' => 'I',
+					'menjao_sifru' => 'N'
 				);
 
 				$this->session->set_userdata('logged_in', $sess_array);
@@ -110,7 +111,8 @@ class Registracija extends CI_Controller {
 				$sess_array = array(
 					'id' => $id, 
 					'email' => $email,
-					'tip_korisnika' => 'P'
+					'tip_korisnika' => 'P',
+					'menjao_sifru' => 'N'
 				);
 
 				$this->session->set_userdata('logged_in', $sess_array);

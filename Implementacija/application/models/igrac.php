@@ -15,26 +15,24 @@ class Igrac extends CI_Model
 	}
 
 	function pretrazi($interesovanja) {
-		$stringPretrage = implode("', '" , $interesovanja);
+		$sess = $this->session->userdata('logged_in');
+		$SifKor= $sess['id'];
 
-		$stringPretrage = '(\'' . $stringPretrage . '\')';
-
-		$sqlQuery = "SELECT Igr.SifKor, Igr.Ime, Igr.Prezime, Igr.Adresa, Igr.DatumRodjenja, Igr.Pol
+		$sqlQuery = "SELECT DISTINCT Igr.SifKor, Igr.Ime, Igr.Prezime, Igr.Adresa, Igr.DatumRodjenja, Igr.Pol
 					 FROM Igrac AS Igr, Ima AS I
 					 WHERE Igr.SifKor NOT IN (SELECT Primalac
 											  FROM Kupovina 
-											  WHERE Primalac = I.SifKor AND Status_ = 'NIJE_OBAVLJENA')
-					 AND I.SifKor = Igr.SifKor
+											  WHERE Status_ = 'NIJE_OBAVLJENA')
 					 AND I.SifInt IN (SELECT SifInt
 									 FROM Interesovanje AS Inter
-									 WHERE I.SifInt = Inter.SifInt
-									 AND Naziv IN " . $stringPretrage . "
-									)";
+									 WHERE Naziv IN  ?
+									)
+					 AND I.SifKor  = Igr.SifKor
+					 AND Igr.SifKor <> ?";
 
-		$query = $this->db->query($sqlQuery);
+		$query = $this->db->query($sqlQuery, array($interesovanja, $SifKor));
 
 		$korisnici = $query->result();
-
 		return $korisnici;
 	}
 

@@ -24,6 +24,14 @@ class Welcome extends CI_Controller {
 	}
 	public function ulogovan()
 	{
-		$this->load->view('welcome_message_logged_in');
+		$sess = $this->session->userdata('logged_in');
+		$menjaoLozinku= $sess['menjao_sifru'];
+
+		if ($menjaoLozinku == 'D') {
+			$this->load->view('welcome_message_change_pass');
+		} else {
+			$this->load->view('welcome_message_logged_in');
+		}
+		
 	}
 }

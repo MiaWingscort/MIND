@@ -31,12 +31,17 @@ class Login extends CI_Controller {
 		$this->load->helper('array');
 
 		if ($result) {
+			if ($result->Zabranjen == 'D') {
+				return false;
+			}
+
 			$sess_array = array();
 		
 			$sess_array = array(
 				'id' => $result->SifKor, 
 				'email' => $result->{'E-mail'},
-				'tip_korisnika' => $result->{'TipKorisnika'}
+				'tip_korisnika' => $result->{'TipKorisnika'},
+				'menjao_sifru' => $result->PonistavaoSifru
 			);
 
 			$this->session->set_userdata('logged_in', $sess_array);

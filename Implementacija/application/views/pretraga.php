@@ -80,7 +80,7 @@
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url(), "naziv"=>"Početna strana");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
-			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "contact.php", "naziv"=>"Kontakt");
+			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Kontakt", "naziv"=>"Kontakt");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Generators", "naziv"=>"Generator");
 			$nizUlaza[] = array("active"=>TRUE, "adresa"=> base_url() . "pretraga", "naziv"=>"Pretraga korisnika");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "PregledProfila", "naziv"=>"Moj profil");
@@ -133,7 +133,7 @@
 																<tbody>";
 													foreach ($korisnici as $korisnik) {
 															echo "<tr>" .
-																	"<td>" . $korisnik->SifKor . "</td>" .
+																	"<td style=\"display:none\">" . $korisnik->SifKor . "</td>" .
 																	"<td>" . $korisnik->Ime . "</td>" .
 																	"<td>" . $korisnik->Prezime . "</td>" .
 																	"<td>" . $korisnik->Adresa . "</td>" .
@@ -158,7 +158,7 @@
 					</div>
 				</div>
 				<div class="row bottomBanner">
-					<img src="./slike/poklonshop.png">
+					<img src=<?php echo base_url() . "/slike/poklonshop.png"?>>
 				</div>
 			</div>
 			<?php 
