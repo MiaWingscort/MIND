@@ -12,10 +12,20 @@ class Kontakt extends CI_Controller {
 	}
 	public function posalji()
 	{
-		$this->posaljiEmail();
+		$this->load->library('form_validation');
+		
+		$this->form_validation->set_rules('ime', 'Input', 'trim|required|alpha', array('required' => 'Niste uneli ime.', 'alpha' => 'Ime mora da sadrzi samo slova.'));
+		$this->form_validation->set_rules('prezime', 'Input', 'trim|required|alpha', array('required' => 'Niste uneli prezime.', 'alpha' => 'Prezime mora da sadrzi samo slova.'));
+		
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', array('required' => 'Niste uneli email.', 'valid_email' => 'Email nije korektno unet.'));
 
-		redirect('/Kontakt');
-
+		if ($this->form_validation->run() == FALSE) {
+			$this->session->set_flashdata('greske-kontakt', validation_errors());
+			redirect('/Kontakt');
+	   	} else {
+			$this->posaljiEmail();
+			redirect('/Kontakt');
+		}
 	}
 	public function posaljiEmail() {
 

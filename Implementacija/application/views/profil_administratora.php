@@ -35,7 +35,11 @@ if($tip!="A")
 </style>
 
 <script type="text/javascript">
-
+	function odobri(id) {
+		$.ajax({url: "http://localhost:8080/ci/Galerija/odobri/" + id , dataType: 'json', success: function(result){
+	        alert("USPESNO STE ODOBRILI SLIKU");
+		}});
+	}
 </script>
 
 </head>
@@ -49,7 +53,6 @@ if($tip!="A")
 					$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url(), "naziv"=>"Početna strana");
 					$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
 					$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
-					$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Kontakt", "naziv"=>"Kontakt");
 					$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "UklanjanjeKorisnika", "naziv"=>"Ukloni korisnika");
 					$nizUlaza[] = array("active"=>TRUE, "adresa"=> base_url() . "PregledProfila", "naziv"=>"Moj profil");
 					$data['nizUlaza']=$nizUlaza;
@@ -121,6 +124,38 @@ if($tip!="A")
 						</div>
 						
 					</div>
+						<div class="panel panel-default"><!--  Novo! -->
+								<div class="panel-body">
+									<h5>LISTA ZAHTEVA ZA GALERIJU</h5>
+								</div>
+							  	<div class="panel-footer">
+									<table class="table">
+										
+										<tbody>
+
+										<?php
+
+											foreach ($resultset as $result) {
+												if($result['Odobrena']==0)
+												{
+													echo "<div class=\"col-lg-4 col-md-6 col-xs-12 thumb\">
+											<a class=\"thumbnail\" href=\"#\">
+									                    <img class=\"img-responsive\" style=\"width: auto;height:200px;\" src=\"". base_url() .$result['PutanjaDoSlike'] ."\" alt=\"\">
+									                    
+									                </a>
+
+									                     <label for=\"files\" class=\"btn\" style=\"border: 1px solid #e60000;\" id=\"".$result['SifSlika']."\" onclick=\"odobri(this.id)\" color: #e60000\">Odobri</label>
+									                      <label for=\"files\" class=\"btn\" id=" . $result['SifSlika']."\" style=\"border: 1px solid #e60000; color: #e60000\">Obrisi</label>
+									                       <label for=\"files\" class=\"btn\" style=\"border: 1px solid #e60000; color: #e60000\">Blokiraj</label>
+									                </div>";
+									            }
+									            }
+														?>
+										</tbody>
+									</table>
+							  	</div>				
+							</div>  <!-- kraj novog! -->
+
 				</div>
 				<div class="row bottomBanner">
 					<img src=<?php echo base_url() . "/slike/poklonshop.png"?>>
@@ -133,5 +168,3 @@ if($tip!="A")
 	</div>
 </body>
 </html>
-
-

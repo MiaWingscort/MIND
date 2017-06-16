@@ -16,7 +16,7 @@ class GalerijaM extends CI_Model
 	}
 
 	function nadjiSaSifrom($sifra) {
-		$this->db->select('SifSlika, SifKor, PutanjaDoSlike');
+		$this->db->select('SifSlika, SifKor, PutanjaDoSlike, Odobrena');
 		$this->db->from('slika_u_galeriji');
 		$this->db->where('SifSlika', $sifra);
 		$this->db->limit(1);
@@ -30,7 +30,7 @@ class GalerijaM extends CI_Model
 		}
 	}
 	function vratiSve() {
-		$this->db->select('SifSlika, SifKor, PutanjaDoSlike');
+		$this->db->select('SifSlika, SifKor, PutanjaDoSlike, Odobrena');
 		$this->db->from('slika_u_galeriji');
 
 		$query = $this->db->get();
@@ -45,7 +45,6 @@ class GalerijaM extends CI_Model
 	function obrisi($idSlike) {
 		$this->db->delete('slika_u_galeriji', array('SifSlika' => $idSlike)); 
 	}
-
 }
 
 ?>

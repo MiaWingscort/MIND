@@ -71,7 +71,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url(), "naziv"=>"Početna strana");
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Galerija", "naziv"=>"Galerija");
 			$nizUlaza[] = array("active"=>TRUE, "adresa"=> base_url() . "Ideje", "naziv"=>"Ideje");
+			if($tip!="A")
+			{
 			$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "Kontakt", "naziv"=>"Kontakt");
+		}
 			if($tip=="A")
 			{
 				$nizUlaza[] = array("active"=>FALSE, "adresa"=> base_url() . "UklanjanjeKorisnika", "naziv"=>"Ukloni korisnika");
@@ -145,7 +148,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 													<tr>
 														<td colspan=\"3\" class=\"col-xs-6\">
 														<div>
-														<img src=" .$PutanjaDoSlike . ">
+														<img src=" . base_url()
+														.$PutanjaDoSlike .
+														">
 														<p align=\"justify\">" . $Tekst . "</p>
 											</div>
 									</td>

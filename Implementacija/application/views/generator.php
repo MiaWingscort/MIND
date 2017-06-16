@@ -132,7 +132,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-8">
 				<div id="main" class="col-xs-12">	
 					<div class="row">
-						<div id="generator" class="col-xs-12 col-md-7 col-lg-8">
+						<div id="generator" class="col-xs-12">
 							<div class="panel panel-default">
 								<div class="panel-body" align="center">
 									<span class="glyphicon glyphicon-user"></span>
@@ -140,7 +140,7 @@
 								</div>
 								<div class="panel-footer">
 									<div class="form-group">
-								      <label class="title">Zelis da igras Tajanstvenog Deda mraza sa svojim prijateljima?</label>
+								      <label class="title">Zelis da igras Tajanstvenog Deda Mraza sa svojim prijateljima?</label>
 									  <form name="generatorForm" method="POST" action="generators/generisiIgru">
 										<table class="table" id="generatorTable">
 											<thead>
